@@ -1,0 +1,67 @@
+<section class="vl-about-vission-bg sp2">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="vission-thumb mb-30">
+          <img class="w-100" src="assets/img/about/vl-vission2.png" alt="">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="vl-vission-content ml-50 mb-30">
+          <div class="vl-section-title-1">
+            <h5 class="subtitle">Our Mission & Vision</h5>
+            <h2 class="title">Our Purpose: Mission and Vision for a Better </h2>
+            <p>Our mission to bring hope, resources, & opportunitie communities <br> in need, empowering individuals to
+              build brighter, sustainable <br> futures we are committed to tackling critical challenges.</p>
+          </div>
+
+          <div class="vl-vission-tab2">
+            <ul ngbNav #nav="ngbNav" class="nav nav-pills" id="pills-tab" role="tablist">
+              <li ngbNavItem class="nav-item" role="presentation">
+                <button ngbNavLink class="nav-link" id="pills-home-tab" data-bs-toggle="pill"
+                  data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                  aria-selected="true">Our Mission</button>
+                <ng-template ngbNavContent>
+                  <p class="para">Our vision is a world where everyone has the opportunity <br> to thrive, with access
+                    the resources and support necessary <br> for lasting change guided by compassion, integrity.</p>
+                  <p class="para pt-20">Guided by compassion, integrity, and community, we work <br> tirelessly to
+                    make this vision a reality. Together, with our <br> supporters, partners, and volunteers, we are
+                    creating.</p>
+                </ng-template>
+              </li>
+              <li class="nav-item" ngbNavItem role="presentation">
+                <button ngbNavLink class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                  data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+                  aria-selected="false">Our Vission </button>
+                <ng-template ngbNavContent>
+                  <p class="para">Our vision is a world where everyone has the opportunity <br> to thrive, with access
+                    the resources and support necessary <br> for lasting change guided by compassion, integrity.</p>
+                  <p class="para pt-20">Guided by compassion, integrity, and community, we work <br> tirelessly to
+                    make this vision a reality. Together, with our <br> supporters, partners, and volunteers, we are
+                    creating.</p>
+                </ng-template>
+              </li>
+              <li class="nav-item" ngbNavItem role="presentation">
+                <button ngbNavLink class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
+                  data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
+                  aria-selected="false">Charity History</button>
+                <ng-template ngbNavContent>
+                  <p class="para">Our vision is a world where everyone has the opportunity <br> to thrive, with access
+                    the
+                    resources and support necessary <br> for lasting change guided by compassion, integrity.</p>
+                  <p class="para pt-20">Guided by compassion, integrity, and community, we work <br> tirelessly to make
+                    this vision a reality. Together, with our <br> supporters, partners, and volunteers, we are
+                    creating.
+                  </p>
+                </ng-template>
+              </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent" [ngbNavOutlet]="nav">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

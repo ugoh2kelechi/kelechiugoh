@@ -1,0 +1,52 @@
+<section class="vl-blog-inner sp2">
+    <div class="container">
+      <div class="row">
+        <!-- Blog Posts -->
+         @for (blog of blogs; track $index) {
+        <div class="col-lg-4 col-md-6">
+          <div class="vl-single-blg-item mb-30">
+            <div class="vl-blg-thumb">
+              <a [routerLink]="['/blog', blog.id]">
+                <img class="w-100" [src]="blog.image" [alt]="blog.title" />
+              </a>
+            </div>
+            <div class="vl-meta">
+              <ul>
+                <li><a href="javascript:void(0);"><span class="top-minus"> 
+                  <img src="assets/img/icons/vl-calender-1.1.svg" alt=""></span> {{ blog.date }}</a></li>
+                <li><a href="javascript:void(0);"><span class="top-minus"> 
+                  <img src="assets/img/icons/vl-user-1.1.svg" alt=""></span> {{ blog.author }}</a></li>
+              </ul>
+            </div>
+            <div class="vl-blg-content">
+              <h3 class="title">
+                <a [routerLink]="['/blog-single']">{{ blog.title }}</a>
+              </h3>
+              <p>{{ blog.description }}</p>
+              <a [routerLink]="['/blog-single']" class="read-more">
+                Read More <span><i class="fa-solid fa-arrow-right"></i></span>
+              </a>
+            </div>
+          </div>
+        </div>
+    }
+      </div>
+    
+      <!-- Pagination -->
+      <div class="row">
+        <div class="col-12 m-auto">
+           <div class="theme-pagination thme-pagination-mt text-center mt-18">
+              <ul>
+                <li><a href="javascript:void(0);"><i class="fa-solid fa-angle-left"></i></a></li>
+                <li><a class="active" href="javascript:void(0);">01</a></li>
+                <li><a href="javascript:void(0);">02</a></li>
+                <li>...</li>
+                <li><a href="javascript:void(0);">12</a></li>
+                <li><a href="javascript:void(0);"><i class="fa-solid fa-angle-right"></i></a></li>
+              </ul>
+           </div>
+       </div>
+    </div>
+    </div>
+  </section>
+  
