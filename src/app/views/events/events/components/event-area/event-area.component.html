@@ -15,10 +15,10 @@
                         <div class="event-meta">
                             <p class="para">{{item.eventTime}}</p>
                         </div>
-                        <a [routerLink]="item.detailsUrl" class="title">{{item.eventTitle}}</a>
+                        <a [routerLink]="['/', item.detailsUrl]" class="title">{{item.eventTitle}}</a>
                         <p class="para">{{item.location}} <br> CA 93722, Fresno CA, CA,
                             United States</p>
-                        <a [routerLink]="item.detailsUrl" class="details">Event Details <span><i
+                        <a [routerLink]="['/', item.detailsUrl]" class="details">Event Details <span><i
                                     class="fa-solid fa-arrow-right"></i></span></a>
                     </div>
                     <div class="event-thumb">

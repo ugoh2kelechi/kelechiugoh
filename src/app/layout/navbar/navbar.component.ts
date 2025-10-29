@@ -23,19 +23,12 @@ export class NavbarComponent {
   @Input() buttonClass: string = '';
 
   homeMenuItems = [
-    { title: 'Disaster Relief', image: 'assets/img/demo/vl-demo1.1.png', multiPageLink: '/index', onePageLink: '/index-single' },
-    { title: 'Animal Rescue and Welfare', image: 'assets/img/demo/vl-demo-1.2.png', multiPageLink: '/index-2', onePageLink: '/index-single-2' },
-    { title: 'Water Aid', image: 'assets/img/demo/vl-demo-1.3.png', multiPageLink: '/index-3', onePageLink: '/index-single-3' },
-    { title: 'Senior Citizen', image: 'assets/img/demo/vl-demo-1.4.png', multiPageLink: '/index-4', onePageLink: '/index-single-4' },
-    { title: 'Human Rights Advocacy', image: 'assets/img/demo/vl-demo-1.5.png', multiPageLink: '/index-5', onePageLink: '/index-single-5' }
+    { title: 'Human Rights Advocacy', image: 'assets/img/demo/vl-demo-1.5.png', multiPageLink: '/', onePageLink: '/index-single-5' }
   ];
 
 
   eventMenuItems = [
-    { title: 'Events', link: '/event' },
-    { title: 'Events Left', link: '/event-left' },
-    { title: 'Events Right', link: '/event-right' },
-    { title: 'Events Single', link: '/event-single' }
+    { title: 'Events', link: '/event' }
   ];
 
   blogMenuItems = [

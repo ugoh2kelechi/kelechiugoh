@@ -3,15 +3,16 @@ import { NavigationEnd, NavigationStart, Router, RouterOutlet } from '@angular/r
 import AOS from 'aos';
 import { PageScrollComponent } from "./layout/page-scroll/page-scroll.component";
 import { TitleService } from './service/title.service';
+import { PreventHashActionDirective } from './directives/prevent-hash-action.directive';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, PreventHashActionDirective],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'helpy-angular';
+  title = 'kelechiugoh-angular';
   isLoading: boolean = true
   private titleService = inject(TitleService);
 
@@ -39,20 +40,21 @@ export class AppComponent {
   }
 
   updateFavicon(route: string) {
-    let faviconPath = 'assets/img/logo/fav-logo1.png'; // Default favicon
-  
-    if (route.includes('/index')) {
-      faviconPath = 'assets/img/logo/fav-logo1.png';
-    } else if (route.includes('/index-2')) {
+    let faviconPath = 'assets/img/logo/fav-logo5.png'; // Default to Human Rights Advocacy
+
+    if (route.includes('/index-2')) {
       faviconPath = 'assets/img/logo/fav-logo2.png';
     } else if (route.includes('/index-3')) {
       faviconPath = 'assets/img/logo/fav-logo3.png';
     } else if (route.includes('/index-4')) {
       faviconPath = 'assets/img/logo/fav-logo4.png';
-    } else if (route.includes('/index-5')) {
+    } else if (route.includes('/home') || route === '/' || route.includes('/index-5')) {
+      // Keep fav-logo5 for home and legacy index-5 routes
       faviconPath = 'assets/img/logo/fav-logo5.png';
+    } else if (route.includes('/index')) {
+      faviconPath = 'assets/img/logo/fav-logo1.png';
     }
-  
+
     // Find existing favicon element or create a new one
     let link = document.querySelector<HTMLLinkElement>("link[rel='icon']");
     if (!link) {
@@ -60,7 +62,7 @@ export class AppComponent {
       link.rel = 'icon';
       document.head.appendChild(link);
     }
-  
+
     link.href = faviconPath + `?v=${new Date().getTime()}`; // Cache busting
   }
   

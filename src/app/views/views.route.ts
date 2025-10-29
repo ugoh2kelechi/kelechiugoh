@@ -8,9 +8,7 @@ import { CausesLeftComponent } from "./causes/causes-left/causes-left.component"
 import { CausesRightComponent } from "./causes/causes-right/causes-right.component";
 import { CausesSingleComponent } from "./causes/causes-single/causes-single.component";
 import { EventsComponent } from "./events/events/events.component";
-import { EventsLeftComponent } from "./events/events-left/events-left.component";
-import { EventsRightComponent } from "./events/events-right/events-right.component";
-import { EventsSingleComponent } from "./events/events-single/events-single.component";
+
 import { ContactComponent } from "./pages/contact/contact.component";
 import { FaqComponent } from "./pages/faq/faq.component";
 import { ServicesComponent } from "./pages/services/services.component";
@@ -61,18 +59,7 @@ export const VIEWS_ROUTE: Route[] = [
         path: 'event',
         component: EventsComponent
     },
-    {
-        path: 'event-left',
-        component: EventsLeftComponent
-    },
-    {
-        path: 'event-right',
-        component: EventsRightComponent
-    },
-    {
-        path: 'event-single',
-        component: EventsSingleComponent
-    },
+
     {
         path: 'faq',
         component: FaqComponent

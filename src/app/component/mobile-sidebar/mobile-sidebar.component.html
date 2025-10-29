@@ -12,10 +12,13 @@
         <ul class="mobile-nav-list nav-list1">
             @for (item of menuItems; track $index) {
             <li [ngClass]="{ 'has-sub hash-has-sub': item.isOpen }">
+                @if(!item.subMenu){
+                <a [routerLink]="item.link">{{ item.title }}</a>
+                }
+                @if(item.subMenu){
                 <a href="javascript:void(0);" (click)="toggleSubMenu(item)" [class.hash-nav]="item.link === '#'">
                     {{ item.title }}
                 </a>
-                @if(item.subMenu){
                 <span class="submenu-button" [ngClass]="{ 'submenu-opened': item.isOpen }" (click)="toggleSubMenu(item, $event)">
                     <em ></em>
                 </span>
@@ -24,7 +27,7 @@
                 <ul class="sub-menu" [ngClass]="{ 'open-sub': item.isOpen }" [ngStyle]="{ 'display': item.isOpen ? 'block' : 'none' }">
                     @for (subItem of item.subMenu; track $index) {
                     <li>
-                        <a href="{{ subItem.link }}">{{ subItem.title }}</a>
+                        <a [routerLink]="subItem.link">{{ subItem.title }}</a>
                     </li>
                     }
                 </ul>

@@ -1,15 +1,10 @@
-
 export const menuItems = [
     {
         "title": "Home",
         "link": "#",
         "isOpen":false,
         "subMenu": [
-            { "title": "Home One", "link": "index" },
-            { "title": "Home Two", "link": "index-2" },
-            { "title": "Home Three", "link": "index-3" },
-            { "title": "Home Four", "link": "index-4" },
-            { "title": "Home Five", "link": "index-5" }
+            { "title": "Home", "link": "/" }
         ]
     },
     {
@@ -18,14 +13,8 @@ export const menuItems = [
     },
     {
         "title": "Events",
-        "isOpen":false,
-        "link": "#",
-        "subMenu": [
-            { "title": "Events", "link": "/event" },
-            { "title": "Events Left", "link": "/event-left" },
-            { "title": "Events Right", "link": "/event-right" },
-            { "title": "Events Single", "link": "/event-single" }
-        ]
+        "link": "/event",
+        "isOpen": false
     },
     {
         "title": "Blogs",
@@ -62,5 +51,3 @@ export const menuItems = [
         ]
     }
 ]
-
-

@@ -10,43 +10,11 @@
                         <div [class]="'main-menu ' + menuClass">
                             <ul>
                                 <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                                    <a routerLink="/">Home <i class="fa-solid fa-angle-down"></i></a>
-                                    <div class="tp-submenu">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="d-flex">
-                                                    <!-- home thumb -->
-                                                    @for (item of homeMenuItems; track $index) {
-                                                    <div class="homemenu-thumb">
-                                                        <div class="img1">
-                                                            <img [src]="item.image" alt="">
-                                                        </div>
-                                                        <div class="homemenu-btn">
-                                                            <a [class]="'header-btn1  mb-20 ' + buttonClass"
-                                                                [routerLink]="item.multiPageLink">Multi Page
-                                                                <span><i class="fa-solid fa-arrow-right"></i></span></a>
-                                                            <a [class]="'header-btn1 '+buttonClass"
-                                                                [routerLink]="item.onePageLink">One Page <span><i
-                                                                        class="fa-solid fa-arrow-right"></i></span></a>
-                                                        </div>
-                                                        <h4 class="home-thumb-title">{{ item.title }}</h4>
-                                                    </div>
-                                                    }
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <a routerLink="/">Home</a>
                                 </li>
                                 <li routerLinkActive="active"><a routerLink="/about">About</a></li>
                                 <li routerLinkActive="active">
-                                    <a href="javascript:void(0);">Events <i class="fa-solid fa-angle-down"></i></a>
-                                    <ul class="dropdown-padding">
-                                        @for (event of eventMenuItems; track $index) {
-                                        <li>
-                                            <a [routerLink]="event.link">{{ event.title }}</a>
-                                        </li>
-                                        }
-                                    </ul>
+                                    <a routerLink="/event">Events</a>
                                 </li>
                                 <li routerLinkActive="active">
                                     <a href="javascript:void(0);">Blogs <i class="fa-solid fa-angle-down"></i></a>

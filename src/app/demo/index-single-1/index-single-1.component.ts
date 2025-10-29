@@ -77,10 +77,12 @@ export class IndexSingle1Component {
     const scrollPosition = window.scrollY;
     const header = this.el.nativeElement.querySelector('.header-area');
 
-    if (scrollPosition < 1) {
-      header.classList.remove('sticky');
-    } else {
-      header.classList.add('sticky');
+    if (header) {
+      if (scrollPosition < 1) {
+        header.classList.remove('sticky');
+      } else {
+        header.classList.add('sticky');
+      }
     }
   }
 
