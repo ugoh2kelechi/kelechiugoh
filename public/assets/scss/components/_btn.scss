@@ -421,8 +421,10 @@
 
 .btn5{
     & .btn-priamry1{
-        background: var(--ztc-text-text-6);
-        color: var(--ztc-text-text-1);
+        // background: var(--ztc-text-text-6);
+        background: var(--ztc-text-text-4);
+        // color: var(--ztc-text-text-1);
+        color: var(--ztc-text-text-3);
         border-radius: 8px;
         padding: 8px 8px 8px 20px;
         display: inline-block;
@@ -440,17 +442,23 @@
             top:0;
             height:100%;
             width: 100%;
-            background: var(--ztc-text-text-3);
+            background: var(--ztc-text-text-1);
             z-index:-1;
             border-radius:8px;
             transform:scaleX(0);
             transition: .3s;
+            color: var(--ztc-text-text-3);
         }
         &:hover{
             &::after{
                 transform: scaleX(1);
                 transition: .3s;
+                color: var(--ztc-text-text-3);
             }
+            span { 
+                background: var(--ztc-text-text-4);
+            }
+            
         }
         & span{
             height:36px;
@@ -459,7 +467,7 @@
             text-align: center;
             display:inline-block;
             background: var(--ztc-text-text-1);
-            color: var(--ztc-text-text-6);
+            color: var(--ztc-text-text-3);
             border-radius: 50px;
             transform:rotate(-45deg);
             transition: .3s;

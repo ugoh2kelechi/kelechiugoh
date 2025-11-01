@@ -1,99 +1,31 @@
-
-<div class="vl-banner p-relative fix">
-    <ngx-slick-carousel [config]="sliderConfig" class="slider-active-1">
-        <!-- single slider -->
-        <div ngxSlickItem class="vl-hero-slider vl-hero-bg"
-            style="background-image: url(./assets/img/banner/vl-banner-1.1.png);">
-            <div class="vl-hero-shape shape-1">
-                <img src="assets/img/shape/vl-hero-shape-1.1.png" alt="">
-            </div>
-            <div class="vl-hero-shape shape-2">
-                <img src="assets/img/shape/vl-hero-shape-1.2.png" alt="">
-            </div>
-
-            <div class="vl-hero-social d-none d-lg-block">
-                <h4 class="title">Follow Us:</h4>
-                <div class="vl-hero-social-icon">
-                    <ul>
-                        <li><a href="javascript:void(0);"><i class="fa-brands fa-facebook-f"></i></a></li>
-                        <li><a href="javascript:void(0);"><i class="fa-brands fa-instagram"></i></a></li>
-                        <li><a href="javascript:void(0);"><i class="fa-brands fa-twitter"></i></a></li>
-                        <li><a href="javascript:void(0);"><i class="fa-brands fa-github"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <div class="vl-hero-section-title">
-                            <h5 class="vl-subtitle"> <span><img src="assets/img/icons/vl-sub-title-icon.svg"
-                                        alt=""></span> Recognizing Our Disaster Relief Heroes</h5>
-                            <h1 class="vl-title text-anime-style-3">Disaster Relief Funding</h1>
-                            <p>In times of crisis, when disaster strikes and hope seems lost, <br> there emerge unsung
-                                heroes who rise to the occasion.</p>
-                            <div class="vl-hero-btn">
-                                <a routerLink="/contact" class="header-btn1">Join The Relief Effort <span><i
-                                            class="fa-solid fa-arrow-right"></i></span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5"></div>
-                </div>
-            </div>
+<app-home />
+<app-about />
+<app-counter />
+<app-choose />
+<app-faq />
+<app-work />
+<app-blog-news />
+<div class="mobile-header mobile-haeder4 d-block d-lg-none">
+  <div class="container">
+    <div class="col-12">
+      <div class="mobile-header-elements">
+        <div class="mobile-logo">
+          <a routerLink="/"
+            ><img src="assets/img/logo/vl-logo-.1.png" alt=""
+          /></a>
         </div>
-
-        <!-- single slider -->
-        <div ngxSlickItem class="vl-hero-slider vl-hero-bg"
-            style="background-image: url(./assets/img/banner/vl-banner-1.1.png);">
-            <div class="vl-hero-shape shape-1">
-                <img src="assets/img/shape/vl-hero-shape-1.1.png" alt="">
-            </div>
-            <div class="vl-hero-shape shape-2">
-                <img src="assets/img/shape/vl-hero-shape-1.2.png" alt="">
-            </div>
-
-            <div class="vl-hero-social d-none d-lg-block">
-                <h4 class="title">Follow Us:</h4>
-                <div class="vl-hero-social-icon">
-                    <ul>
-                        <li><a href="javascript:void(0);"><i class="fa-brands fa-facebook-f"></i></a></li>
-                        <li><a href="javascript:void(0);"><i class="fa-brands fa-instagram"></i></a></li>
-                        <li><a href="javascript:void(0);"><i class="fa-brands fa-twitter"></i></a></li>
-                        <li><a href="javascript:void(0);"><i class="fa-brands fa-github"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <div class="vl-hero-section-title">
-                            <h5 class="vl-subtitle"> <span><img src="assets/img/icons/vl-sub-title-icon.svg"
-                                        alt=""></span> Recognizing Our Disaster Relief Heroes</h5>
-                            <h1 class="vl-title text-anime-style-3">Disaster Relief Funding</h1>
-                            <p>In times of crisis, when disaster strikes and hope seems lost, <br> there emerge unsung
-                                heroes who rise to the occasion.</p>
-                            <div class="vl-hero-btn">
-                                <a routerLink="/contact" class="header-btn1">Join The Relief Effort <span><i
-                                            class="fa-solid fa-arrow-right"></i></span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5"></div>
-                </div>
-            </div>
+        <div
+          class="mobile-nav-icon mobile-nav-icon3 dots-menu"
+          (click)="toggleMenu()"
+        >
+          <i class="fa-solid fa-bars"></i>
         </div>
-    </ngx-slick-carousel>
-    <div class="vl-arrow">
-        <span class="prev-arow"><i class="fa-solid fa-angle-right"></i></span>
-        <span class="next-arow"><i class="fa-solid fa-angle-left"></i></span>
+      </div>
     </div>
+  </div>
 </div>
-<app-about/>
-<app-cause/>
-<app-event/>
-<app-testimonial/>
-<app-gallary/>
-<app-team-area/>
-<app-blog-area/>
+
+<app-mobile-sidebar [isMenuOpen]="isMenuOpen" (closeMenuEvent)="closeMenu()">
+</app-mobile-sidebar>
+
+<app-page-scroll progressClass="progress-wrap" />

@@ -4,7 +4,7 @@ import { Component, ElementRef, HostListener, Input } from '@angular/core';
   selector: 'app-page-scroll',
   imports: [],
   templateUrl: './page-scroll.component.html',
-  styles: ``
+  styleUrls: ['./page-scroll.component.scss']
 })
 export class PageScrollComponent {
   pathLength!: number;

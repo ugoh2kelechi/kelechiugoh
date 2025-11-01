@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-event-content',
   imports: [RouterLink,CommonModule],
   templateUrl: './event-content.component.html',
-  styles: ``
+  styleUrls: ['./event-content.component.scss']
 })
 export class EventContentComponent {
 eventData = eventArea

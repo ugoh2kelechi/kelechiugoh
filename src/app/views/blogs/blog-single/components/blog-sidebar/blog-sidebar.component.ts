@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
   selector: 'app-blog-sidebar',
   imports: [RouterLink],
   templateUrl: './blog-sidebar.component.html',
-  styles: ``
+  styleUrls: ['./blog-sidebar.component.scss']
 })
 export class BlogSidebarComponent {
 

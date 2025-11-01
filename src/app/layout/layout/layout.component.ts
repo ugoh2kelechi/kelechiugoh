@@ -1,17 +1,25 @@
-import { Component, ElementRef, HostListener } from '@angular/core';
+import { Component, ElementRef, HostListener } from "@angular/core";
 import { AlertComponent } from "../alert/alert.component";
 import { NavbarComponent } from "../navbar/navbar.component";
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet } from "@angular/router";
 import { FooterComponent } from "../footer/footer.component";
-import { SubscribeComponent } from "../../component/subscribe/subscribe.component";
-import { MobileSidebarComponent } from "../../component/mobile-sidebar/mobile-sidebar.component";
+import { SubscribeComponent } from "../../common/subscribe/subscribe.component";
+import { MobileSidebarComponent } from "../../common/mobile-sidebar/mobile-sidebar.component";
 import { PageScrollComponent } from "../page-scroll/page-scroll.component";
 
 @Component({
-  selector: 'app-layout',
-  imports: [AlertComponent, NavbarComponent, RouterOutlet, FooterComponent, SubscribeComponent, MobileSidebarComponent, PageScrollComponent],
-  templateUrl: './layout.component.html',
-  styles: ``
+  selector: "app-layout",
+  imports: [
+    AlertComponent,
+    NavbarComponent,
+    RouterOutlet,
+    FooterComponent,
+    SubscribeComponent,
+    MobileSidebarComponent,
+    PageScrollComponent,
+  ],
+  templateUrl: "./layout.component.html",
+  styleUrls: ['./layout.component.scss'],
 })
 export class LayoutComponent {
   isMenuOpen = false;
@@ -24,17 +32,15 @@ export class LayoutComponent {
   closeMenu() {
     this.isMenuOpen = false;
   }
-  @HostListener('window:scroll', [])
+  @HostListener("window:scroll", [])
   onScroll() {
     const scrollPosition = window.scrollY;
-    const header = this.el.nativeElement.querySelector('.header-area');
+    const header = this.el.nativeElement.querySelector(".header-area");
 
-    if (header) {
-      if (scrollPosition < 1) {
-        header.classList.remove('sticky');
-      } else {
-        header.classList.add('sticky');
-      }
+    if (scrollPosition < 1) {
+      header.classList.remove("sticky");
+    } else {
+      header.classList.add("sticky");
     }
   }
 }

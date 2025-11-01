@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-blog-content',
   imports: [RouterLink,CommonModule],
   templateUrl: './blog-content.component.html',
-  styles: ``
+  styleUrls: ['./blog-content.component.scss']
 })
 export class BlogContentComponent {
   blogs = blogs

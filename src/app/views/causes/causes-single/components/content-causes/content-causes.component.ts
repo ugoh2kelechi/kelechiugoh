@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
   selector: 'app-content-causes',
   imports: [RouterLink],
   templateUrl: './content-causes.component.html',
-  styles: ``
+  styleUrls: ['./content-causes.component.scss']
 })
 export class ContentCausesComponent {
 

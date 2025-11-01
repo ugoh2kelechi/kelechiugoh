@@ -43,22 +43,22 @@
             & .para{
                 color: rgba(255, 255, 255, 0.80);
             }
-            & .btn5{
-                & .btn-priamry1{
-                    background: var(--ztc-text-text-1);
-                    color:var(--ztc-text-text-3);
-                    margin-top: 32px;
-                    transition: .3s;
-                    &:hover{
-                        color:var(--ztc-text-text-1);
-                        transition: .3s;
-                    }
-                    & span{
-                        background:var(--ztc-text-text-6);
-                        color: var(--ztc-text-text-1);
-                    }
-                }
-            }
+            // & .btn5{
+            //     & .btn-priamry1{
+            //         background: var(--ztc-text-text-1);
+            //         color:var(--ztc-text-text-3);
+            //         margin-top: 32px;
+            //         transition: .3s;
+            //         &:hover{
+            //             color:var(--ztc-text-text-1);
+            //             transition: .3s;
+            //         }
+            //         & span{
+            //             background:var(--ztc-text-text-6);
+            //             color: var(--ztc-text-text-1);
+            //         }
+            //     }
+            // }
         }
     }
     & .single-counter-box{

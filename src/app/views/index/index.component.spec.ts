@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { IndexComponent } from './index.component';
+import { IndexComponent } from "./index.component";
 
-describe('IndexComponent', () => {
+describe("IndexComponent", () => {
   let component: IndexComponent;
   let fixture: ComponentFixture<IndexComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [IndexComponent]
-    })
-    .compileComponents();
+      imports: [IndexComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(IndexComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

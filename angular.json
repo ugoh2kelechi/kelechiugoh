@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "kelechiugoh": {
+    "helpy-angular": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/kelechiugoh",
+            "outputPath": "dist/helpy-angular",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js", "@angular/localize/init"],
@@ -77,10 +77,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "kelechiugoh:build:production"
+              "buildTarget": "helpy-angular:build:production"
             },
             "development": {
-              "buildTarget": "kelechiugoh:build:development"
+              "buildTarget": "helpy-angular:build:development"
             }
           },
           "defaultConfiguration": "development"

@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   selector: 'app-service-area',
   imports: [CommonModule],
   templateUrl: './service-area.component.html',
-  styles: ``
+  styleUrls: ['./service-area.component.scss']
 })
 export class ServiceAreaComponent {
   services = [

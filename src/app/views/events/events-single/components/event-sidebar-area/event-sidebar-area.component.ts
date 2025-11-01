@@ -6,7 +6,7 @@ import { RouterLink } from '@angular/router';
   selector: 'app-event-sidebar-area',
   imports: [CommonModule,RouterLink],
   templateUrl: './event-sidebar-area.component.html',
-  styles: ``
+  styleUrls: ['./event-sidebar-area.component.scss']
 })
 export class EventSidebarAreaComponent {
   amounts = [10, 20, 30, 40, 50];

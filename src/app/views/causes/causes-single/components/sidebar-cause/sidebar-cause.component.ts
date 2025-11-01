@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   selector: 'app-sidebar-cause',
   imports: [CommonModule],
   templateUrl: './sidebar-cause.component.html',
-  styles: ``
+  styleUrls: ['./sidebar-cause.component.scss']
 })
 export class SidebarCauseComponent {
   amounts = [10, 20, 30, 40, 50];

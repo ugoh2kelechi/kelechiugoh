@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
   selector: 'app-footer',
   imports: [RouterLink],
   templateUrl: './footer.component.html',
-  styles: ``
+  styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
   year = new Date().getFullYear();
@@ -43,7 +43,7 @@ export class FooterComponent {
   ];
 
   contactInfo = [
-    { icon: 'assets/img/icons/vl-footer-ic-1.1.svg', text: 'office@kelechiugoh.com', link: 'mailto:office@kelechiugoh.com' },
+    { icon: 'assets/img/icons/vl-footer-ic-1.1.svg', text: 'support@charity.com', link: 'mailto:support@charity.com' },
     { icon: 'assets/img/icons/vl-footer-ic-1.2.svg', text: '8708 Technology Forest Pl Suite 125 -G, The Woodlands, TX 773', link: '#' },
     { icon: 'assets/img/icons/vl-footer-2.1.svg', text: '123-456-7890', link: 'tel:1234567890' }
   ];
