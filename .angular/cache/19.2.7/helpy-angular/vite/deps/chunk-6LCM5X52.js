@@ -4597,6 +4597,7 @@ export {
   isFunction,
   Subscription,
   noop,
+  SafeSubscriber,
   pipe,
   Observable,
   createOperatorSubscriber,
@@ -4737,4 +4738,4 @@ export {
   partition,
   race2
 };
-//# sourceMappingURL=chunk-U5YOOJV4.js.map
+//# sourceMappingURL=chunk-6LCM5X52.js.map
