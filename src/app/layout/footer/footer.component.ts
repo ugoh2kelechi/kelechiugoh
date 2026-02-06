@@ -20,10 +20,11 @@ export class FooterComponent {
   ];
 
   socialLinks = [
-    { icon: 'fa-brands fa-facebook-f', link: '#' },
-    { icon: 'fa-brands fa-instagram', link: '#' },
-    { icon: 'fa-brands fa-twitter', link: '#' },
-    { icon: 'fa-brands fa-github', link: '#' }
+    { icon: 'fa-brands fa-facebook-f', link: 'https://www.facebook.com/profile.php?id=61576566101984' },
+    { icon: 'fa-brands fa-instagram', link: 'https://www.instagram.com/officialkku/' },
+    { icon: 'fa-brands fa-twitter', link: 'https://x.com/officialkku' },
+    { icon: 'fa-brands fa-youtube', link: 'https://www.youtube.com/@OfficialKelechiUgoh' },
+    { icon: 'fa-brands fa-tiktok', link: 'https://www.tiktok.com/@officialkku' }
   ];
 
   quickLinks = [
@@ -43,8 +44,8 @@ export class FooterComponent {
   ];
 
   contactInfo = [
-    { icon: 'assets/img/icons/vl-footer-ic-1.1.svg', text: 'support@charity.com', link: 'mailto:support@charity.com' },
-    { icon: 'assets/img/icons/vl-footer-ic-1.2.svg', text: '8708 Technology Forest Pl Suite 125 -G, The Woodlands, TX 773', link: '#' },
-    { icon: 'assets/img/icons/vl-footer-2.1.svg', text: '123-456-7890', link: 'tel:1234567890' }
+    { icon: 'assets/img/icons/vl-footer-ic-1.1.svg', text: 'office@kelechiugoh.com', link: 'mailto:office@kelechiugoh.com' },
+    { icon: 'assets/img/icons/vl-footer-ic-1.2.svg', text: 'WORLD WIDE', link: '#' },
+    { icon: 'assets/img/icons/vl-footer-2.1.svg', text: '+1 (267) 367-7154', link: 'tel:+1(267)3677154' }
   ];
 }
