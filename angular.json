@@ -20,7 +20,10 @@
             "outputPath": "dist/helpy-angular",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": ["zone.js", "@angular/localize/init"],
+            "polyfills": [
+              "zone.js",
+              "@angular/localize/init"
+            ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -31,20 +34,21 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/slick-carousel/slick/slick.scss",
               "node_modules/animate.css/animate.min.css"
             ],
-            "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/slick-carousel/slick/slick.min.js"
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "aos",
+              "@sanity/image-url",
+              "@sanity/eventsource",
+              "event-source-polyfill"
             ],
             "stylePreprocessorOptions": {
               "sass": {
                 "silenceDeprecations": [
                   "color-functions",
                   "global-builtin",
-                  "import",
-                  "mixed-decls"
+                  "import"
                 ]
               }
             }
@@ -104,7 +108,9 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles.scss"],
+            "styles": [
+              "src/styles.scss"
+            ],
             "scripts": []
           }
         }
