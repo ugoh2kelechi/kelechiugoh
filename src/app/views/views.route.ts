@@ -12,6 +12,7 @@ import { PrivacyPolicyComponent } from "./pages/privacy-policy/privacy-policy.co
 import { ServicesComponent } from "./pages/services/services.component";
 import { TermsConditionsComponent } from "./pages/terms-conditions/terms-conditions.component";
 import { VolunteersComponent } from "./pages/volunteers/volunteers.component";
+import { PhilanthropyComponent } from "./pages/philanthropy/philanthropy.component";
 import { Error404Component } from "./pages/error404/error404.component";
 import { AboutComponent } from "./about/about.component";
 import { IndexComponent } from "./index/index.component";
@@ -112,6 +113,14 @@ export const VIEWS_ROUTE: Route[] = [
     data: {
       title: "Terms & Conditions | Kelechi K. Ugoh",
       description: "Review our terms and conditions of use.",
+    },
+  },
+  {
+    path: "philanthropy",
+    component: PhilanthropyComponent,
+    data: {
+      title: "Philanthropy | Kelechi K. Ugoh",
+      description: "Learn about our philanthropic partnerships and impact.",
     },
   },
   {

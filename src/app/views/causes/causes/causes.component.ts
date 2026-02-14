@@ -13,4 +13,26 @@ import type { CauseItem } from "../../../models/cause.model";
 })
 export class CausesComponent {
   causes: CauseItem[] = CAUSES;
+  currentPage = 1;
+  pageSize = 6;
+
+  get totalPages(): number {
+    return Math.max(1, Math.ceil(this.causes.length / this.pageSize));
+  }
+
+  get pagedCauses(): CauseItem[] {
+    const start = (this.currentPage - 1) * this.pageSize;
+    return this.causes.slice(start, start + this.pageSize);
+  }
+
+  get pages(): number[] {
+    return Array.from({ length: this.totalPages }, (_, i) => i + 1);
+  }
+
+  goToPage(page: number): void {
+    if (page < 1 || page > this.totalPages) {
+      return;
+    }
+    this.currentPage = page;
+  }
 }

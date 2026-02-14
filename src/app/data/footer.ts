@@ -33,7 +33,7 @@ export const FOOTER_SOCIAL_LINKS: FooterSocialLink[] = [
 ];
 
 export const FOOTER_QUICK_LINKS: FooterLink[] = [
-  { label: "Home Page", url: "/" },
+  { label: "Home", url: "/" },
   { label: "About Us", url: "/about" },
   { label: "News & Blog", url: "/blog" },
   { label: "Testimonials", url: "/testimonials" },
@@ -42,7 +42,7 @@ export const FOOTER_QUICK_LINKS: FooterLink[] = [
 export const FOOTER_SERVICES: FooterLink[] = [
   { label: "Donation", url: "/donation" },
   { label: "Volunteering", url: "/volunteers" },
-  { label: "Your Philanthropy", url: "#" },
+  { label: "Philanthropy", url: "/philanthropy" },
 ];
 
 export const FOOTER_CONTACT_INFO: FooterContactInfo[] = [

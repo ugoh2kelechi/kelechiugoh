@@ -1,7 +1,7 @@
 <section class="vl-singlevent-iner sp1">
   <div class="container">
     <div class="row">
-      @for (item of eventAreaData; track $index) {
+      @for (item of pagedEvents; track $index) {
         <!-- single event item -->
         <div class="col-lg-12 mb-50">
           <div
@@ -48,27 +48,41 @@
     </div>
 
     <!-- pagination -->
-    <div class="row">
-      <div class="col-12 m-auto">
-        <div class="theme-pagination thme-pagination-mt text-center mt-18">
-          <ul>
-            <li>
-              <a href="javascript:void(0);"
-                ><i class="fa-solid fa-angle-left"></i
-              ></a>
-            </li>
-            <li><a class="active" href="javascript:void(0);">01</a></li>
-            <li><a href="javascript:void(0);">02</a></li>
-            <li>...</li>
-            <li><a href="javascript:void(0);">12</a></li>
-            <li>
-              <a href="javascript:void(0);"
-                ><i class="fa-solid fa-angle-right"></i
-              ></a>
-            </li>
-          </ul>
+    @if (totalPages > 1) {
+      <div class="row">
+        <div class="col-12 m-auto">
+          <div class="theme-pagination thme-pagination-mt text-center mt-18">
+            <ul>
+              <li [class.disabled]="currentPage === 1">
+                <a
+                  href="javascript:void(0);"
+                  (click)="goToPage(currentPage - 1)"
+                >
+                  <i class="fa-solid fa-angle-left"></i>
+                </a>
+              </li>
+              @for (page of pages; track page) {
+                <li>
+                  <a
+                    href="javascript:void(0);"
+                    [class.active]="page === currentPage"
+                    (click)="goToPage(page)"
+                    >{{ page }}</a
+                  >
+                </li>
+              }
+              <li [class.disabled]="currentPage === totalPages">
+                <a
+                  href="javascript:void(0);"
+                  (click)="goToPage(currentPage + 1)"
+                >
+                  <i class="fa-solid fa-angle-right"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
+    }
   </div>
 </section>
