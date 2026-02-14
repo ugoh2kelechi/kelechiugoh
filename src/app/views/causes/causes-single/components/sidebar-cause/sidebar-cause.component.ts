@@ -1,15 +1,19 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { CommonModule, NgOptimizedImage } from "@angular/common";
+import { Component } from "@angular/core";
+import {
+  DEFAULT_DONATION_AMOUNT,
+  DONATION_AMOUNTS,
+} from "../../../../../data/donation-amounts";
 
 @Component({
-  selector: 'app-sidebar-cause',
-  imports: [CommonModule],
-  templateUrl: './sidebar-cause.component.html',
-  styleUrls: ['./sidebar-cause.component.scss']
+  selector: "app-sidebar-cause",
+  imports: [CommonModule, NgOptimizedImage],
+  templateUrl: "./sidebar-cause.component.html",
+  styleUrls: ["./sidebar-cause.component.scss"],
 })
 export class SidebarCauseComponent {
-  amounts = [10, 20, 30, 40, 50];
-  selectedAmount: number = 10
+  amounts = DONATION_AMOUNTS;
+  selectedAmount: number = DEFAULT_DONATION_AMOUNT;
 
   selectAmount(amount: number) {
     this.selectedAmount = amount;

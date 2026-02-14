@@ -4,84 +4,109 @@
       <div class="col-lg-6">
         <div class="testimonial-slides-wrap">
           <!-- slider thumbnail -->
-          <owl-carousel-o
-            #thumbCarousel
-            [options]="thumbOptions"
-            class="slider-thumb slider-for1"
-            (translated)="onThumbTranslated($event)"
-          >
-            <ng-template carouselSlide *ngFor="let item of testimonials">
-              <div class="single-thumb">
-                <img class="w-100" [src]="item.imageLarge" [alt]="item.name" />
-              </div>
-            </ng-template>
-          </owl-carousel-o>
-
-          <div class="content-box-2">
+          @defer (on viewport) {
             <owl-carousel-o
-              #contentCarousel
-              [options]="contentOptions"
-              class="slider-sm slider-nav1 p-relative"
-              (translated)="onContentTranslated($event)"
+              #thumbCarousel
+              [options]="thumbOptions"
+              class="slider-thumb slider-for1"
+              (translated)="onThumbTranslated($event)"
             >
-              <!-- silder item -->
               <ng-template carouselSlide *ngFor="let item of testimonials">
-                <div class="slider-content-box content-box2">
-                  <div class="icon">
-                    <ul>
-                      <li>
-                        <span
-                          ><img
-                            src="assets/img/icons/vl-review-icon-4.1.svg"
-                            alt=""
-                        /></span>
-                      </li>
-                      <li>
-                        <span
-                          ><img
-                            src="assets/img/icons/vl-review-icon-4.1.svg"
-                            alt=""
-                        /></span>
-                      </li>
-                      <li>
-                        <span
-                          ><img
-                            src="assets/img/icons/vl-review-icon-4.1.svg"
-                            alt=""
-                        /></span>
-                      </li>
-                      <li>
-                        <span
-                          ><img
-                            src="assets/img/icons/vl-review-icon-4.1.svg"
-                            alt=""
-                        /></span>
-                      </li>
-                      <li>
-                        <span
-                          ><img
-                            src="assets/img/icons/vl-review-icon-4.1.svg"
-                            alt=""
-                        /></span>
-                      </li>
-                    </ul>
-                  </div>
-                  <p class="para">"{{ item.text }}"</p>
-                  <div class="slider-flex">
-                    <div class="user">
-                      <img [src]="item.imageSmall" [alt]="item.name" />
-                    </div>
-                    <div class="content">
-                      <a href="javascript:void(0);" class="title">{{
-                        item.name
-                      }}</a>
-                      <span>{{ item.role }}</span>
-                    </div>
-                  </div>
+                <div class="single-thumb">
+                  <img
+                    class="w-100"
+                    [ngSrc]="item.imageLarge"
+                    width="600"
+                    height="400"
+                    [alt]="item.name"
+                  />
                 </div>
               </ng-template>
             </owl-carousel-o>
-          </div>
+
+            <div class="content-box-2">
+              <owl-carousel-o
+                #contentCarousel
+                [options]="contentOptions"
+                class="slider-sm slider-nav1 p-relative"
+                (translated)="onContentTranslated($event)"
+              >
+                <!-- silder item -->
+                <ng-template carouselSlide *ngFor="let item of testimonials">
+                  <div class="slider-content-box content-box2">
+                    <div class="icon">
+                      <ul>
+                        <li>
+                          <span
+                            ><img
+                              ngSrc="assets/img/icons/vl-review-icon-4.1.svg"
+                              width="24"
+                              height="24"
+                              alt="Review"
+                          /></span>
+                        </li>
+                        <li>
+                          <span
+                            ><img
+                              ngSrc="assets/img/icons/vl-review-icon-4.1.svg"
+                              width="24"
+                              height="24"
+                              alt="Review"
+                          /></span>
+                        </li>
+                        <li>
+                          <span
+                            ><img
+                              ngSrc="assets/img/icons/vl-review-icon-4.1.svg"
+                              width="24"
+                              height="24"
+                              alt="Review"
+                          /></span>
+                        </li>
+                        <li>
+                          <span
+                            ><img
+                              ngSrc="assets/img/icons/vl-review-icon-4.1.svg"
+                              width="24"
+                              height="24"
+                              alt="Review"
+                          /></span>
+                        </li>
+                        <li>
+                          <span
+                            ><img
+                              ngSrc="assets/img/icons/vl-review-icon-4.1.svg"
+                              width="24"
+                              height="24"
+                              alt="Review"
+                          /></span>
+                        </li>
+                      </ul>
+                    </div>
+                    <p class="para">"{{ item.text }}"</p>
+                    <div class="slider-flex">
+                      <div class="user">
+                        <img
+                          [ngSrc]="item.imageSmall"
+                          width="120"
+                          height="120"
+                          [alt]="item.name"
+                        />
+                      </div>
+                      <div class="content">
+                        <a href="javascript:void(0);" class="title">{{
+                          item.name
+                        }}</a>
+                        <span>{{ item.role }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+              </owl-carousel-o>
+            </div>
+          } @placeholder {
+            <div class="testimonial-placeholder"></div>
+          }
         </div>
       </div>
       <div class="col-lg-6">

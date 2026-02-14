@@ -17,53 +17,105 @@ export const VIEWS_ROUTE: Route[] = [
   {
     path: "about",
     component: AboutComponent,
+    data: {
+      title: "About | Kelechi K. Ugoh",
+      description: "Learn about our mission, vision, and impact.",
+    },
   },
   {
     path: "blog",
     component: BlogComponent,
+    data: {
+      title: "Blog | Kelechi K. Ugoh",
+      description: "Stories, updates, and insights from our work.",
+    },
   },
   {
     path: "blog-single",
     component: BlogSingleComponent,
+    data: {
+      title: "Blog Post | Kelechi K. Ugoh",
+      description: "Read the full story and key takeaways.",
+    },
   },
   {
     path: "causes",
     component: CausesComponent,
+    data: {
+      title: "Causes | Kelechi K. Ugoh",
+      description: "Explore the causes we support and how you can help.",
+    },
   },
   {
     path: "causes-single",
     component: CausesSingleComponent,
+    data: {
+      title: "Cause Details | Kelechi K. Ugoh",
+      description: "Learn more about this cause and its impact.",
+    },
   },
   {
     path: "event",
     component: EventsComponent,
+    data: {
+      title: "Events | Kelechi K. Ugoh",
+      description: "Upcoming events and community initiatives.",
+    },
   },
   {
     path: "event-single",
     component: EventsSingleComponent,
+    data: {
+      title: "Event Details | Kelechi K. Ugoh",
+      description: "Event information, schedules, and participation details.",
+    },
   },
   {
     path: "faq",
     component: FaqComponent,
+    data: {
+      title: "FAQ | Kelechi K. Ugoh",
+      description: "Frequently asked questions and answers.",
+    },
   },
   {
     path: "services",
     component: ServicesComponent,
+    data: {
+      title: "Services | Kelechi K. Ugoh",
+      description: "Our services and programs for community impact.",
+    },
   },
   {
     path: "volunteers",
     component: VolunteersComponent,
+    data: {
+      title: "Volunteers | Kelechi K. Ugoh",
+      description: "Meet our volunteers and their contributions.",
+    },
   },
   {
     path: "404",
     component: Error404Component,
+    data: {
+      title: "Page Not Found | Kelechi K. Ugoh",
+      description: "The page you are looking for does not exist.",
+    },
   },
   {
     path: "contact",
     component: ContactComponent,
+    data: {
+      title: "Contact | Kelechi K. Ugoh",
+      description: "Get in touch with us.",
+    },
   },
   {
     path: "index",
     component: IndexComponent,
+    data: {
+      title: "Home | Kelechi K. Ugoh",
+      description: "Official website and community impact initiatives.",
+    },
   },
 ];

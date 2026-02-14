@@ -1,34 +1,14 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { CommonModule, NgOptimizedImage } from "@angular/common";
+import { Component } from "@angular/core";
+import { SERVICES_AREA_2 } from "../../../../../data/services-area2";
+import type { ServiceItem } from "../../../../../models/service-item.model";
 
 @Component({
-  selector: 'app-service-area2',
-  imports: [CommonModule],
-  templateUrl: './service-area2.component.html',
-  styleUrls: ['./service-area2.component.scss']
+  selector: "app-service-area2",
+  imports: [CommonModule, NgOptimizedImage],
+  templateUrl: "./service-area2.component.html",
+  styleUrls: ["./service-area2.component.scss"],
 })
 export class ServiceArea2Component {
-  services = [
-    {
-      title: 'Food & Water Charity',
-      description: 'Big Hearts the largest crowdfunding community connecting nonprofits, donors, and companies in nearly.',
-      image: 'assets/img/service/vl-service-inner-1.1.png',
-      icon: 'assets/img/icons/vl-service-iner-ic-1.1.svg',
-      active: false
-    },
-    {
-      title: 'Become a Volunteer',
-      description: 'Big Hearts the largest crowdfunding community connecting nonprofits, donors, and companies in nearly.',
-      image: 'assets/img/service/vl-service-inner-1.2.png',
-      icon: 'assets/img/icons/vl-service-iner-ic-1.2.svg',
-      active: true
-    },
-    {
-      title: 'Send Gift for Children',
-      description: 'Big Hearts the largest crowdfunding community connecting nonprofits, donors, and companies in nearly.',
-      image: 'assets/img/service/vl-service-inner-1.3.png',
-      icon: 'assets/img/icons/vl-service-iner-ic-1.1.svg',
-      active: false
-    }
-  ];
+  services: ServiceItem[] = SERVICES_AREA_2;
 }

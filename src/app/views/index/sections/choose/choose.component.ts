@@ -1,3 +1,4 @@
+import { NgOptimizedImage } from "@angular/common";
 import { Component } from "@angular/core";
 import { GsapRevealDirective } from "../../../../directives/gsap-reveal.directive";
 import { CarouselModule, OwlOptions } from "ngx-owl-carousel-o";
@@ -5,9 +6,9 @@ import { RouterLink } from "@angular/router";
 
 @Component({
   selector: "app-choose",
-  imports: [GsapRevealDirective, CarouselModule, RouterLink],
+  imports: [GsapRevealDirective, CarouselModule, RouterLink, NgOptimizedImage],
   templateUrl: "./choose.component.html",
-  styleUrls: ['./choose.component.scss'],
+  styleUrls: ["./choose.component.scss"],
 })
 export class ChooseComponent {
   chooseSlider: OwlOptions = {

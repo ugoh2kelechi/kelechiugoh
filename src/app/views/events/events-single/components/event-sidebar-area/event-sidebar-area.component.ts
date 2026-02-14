@@ -1,16 +1,20 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { CommonModule, NgOptimizedImage } from "@angular/common";
+import { Component } from "@angular/core";
+import { RouterLink } from "@angular/router";
+import {
+  DEFAULT_DONATION_AMOUNT,
+  DONATION_AMOUNTS,
+} from "../../../../../data/donation-amounts";
 
 @Component({
-  selector: 'app-event-sidebar-area',
-  imports: [CommonModule,RouterLink],
-  templateUrl: './event-sidebar-area.component.html',
-  styleUrls: ['./event-sidebar-area.component.scss']
+  selector: "app-event-sidebar-area",
+  imports: [CommonModule, RouterLink, NgOptimizedImage],
+  templateUrl: "./event-sidebar-area.component.html",
+  styleUrls: ["./event-sidebar-area.component.scss"],
 })
 export class EventSidebarAreaComponent {
-  amounts = [10, 20, 30, 40, 50];
-  selectedAmount: number = 10
+  amounts = DONATION_AMOUNTS;
+  selectedAmount: number = DEFAULT_DONATION_AMOUNT;
 
   selectAmount(amount: number) {
     this.selectedAmount = amount;

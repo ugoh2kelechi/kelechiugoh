@@ -1,12 +1,20 @@
-import { Component, inject } from "@angular/core";
+import { DOCUMENT } from "@angular/common";
+import {
+  Component,
+  DestroyRef,
+  Renderer2,
+  RendererFactory2,
+  inject,
+} from "@angular/core";
 import {
   NavigationEnd,
   NavigationStart,
   Router,
   RouterOutlet,
 } from "@angular/router";
+import { filter } from "rxjs/operators";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import AOS from "aos";
-import { PageScrollComponent } from "./layout/page-scroll/page-scroll.component";
 import { TitleService } from "./service/title.service";
 
 @Component({
@@ -19,27 +27,36 @@ export class AppComponent {
   title = "Kelechi K. Ugoh";
   isLoading: boolean = true;
   private titleService = inject(TitleService);
+  private destroyRef = inject(DestroyRef);
+  private document = inject(DOCUMENT);
+  private renderer: Renderer2;
 
   constructor(private router: Router) {
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.updateFavicon(event.urlAfterRedirects);
-      }
-    });
+    const rendererFactory = inject(RendererFactory2);
+    this.renderer = rendererFactory.createRenderer(null, null);
   }
 
   ngOnInit() {
     this.titleService.init();
     AOS.init();
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationStart) {
-        this.isLoading = true;
-      } else if (event instanceof NavigationEnd) {
-        setTimeout(() => {
-          this.isLoading = false;
-        }, 200);
-      }
-    });
+    this.router.events
+      .pipe(
+        filter(
+          (event): event is NavigationStart | NavigationEnd =>
+            event instanceof NavigationStart || event instanceof NavigationEnd,
+        ),
+        takeUntilDestroyed(this.destroyRef),
+      )
+      .subscribe((event) => {
+        if (event instanceof NavigationStart) {
+          this.isLoading = true;
+        } else {
+          this.updateFavicon(event.urlAfterRedirects);
+          setTimeout(() => {
+            this.isLoading = false;
+          }, 200);
+        }
+      });
   }
 
   updateFavicon(route: string) {
@@ -58,13 +75,17 @@ export class AppComponent {
     }
 
     // Find existing favicon element or create a new one
-    let link = document.querySelector<HTMLLinkElement>("link[rel='icon']");
+    let link = this.document.querySelector<HTMLLinkElement>("link[rel='icon']");
     if (!link) {
-      link = document.createElement("link");
-      link.rel = "icon";
-      document.head.appendChild(link);
+      link = this.renderer.createElement("link");
+      this.renderer.setAttribute(link, "rel", "icon");
+      this.renderer.appendChild(this.document.head, link);
     }
 
-    link.href = faviconPath + `?v=${new Date().getTime()}`; // Cache busting
+    this.renderer.setAttribute(
+      link,
+      "href",
+      faviconPath + `?v=${new Date().getTime()}`,
+    ); // Cache busting
   }
 }

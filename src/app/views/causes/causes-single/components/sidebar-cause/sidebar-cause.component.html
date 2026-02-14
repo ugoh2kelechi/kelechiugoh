@@ -4,7 +4,13 @@
       <div class="col-lg-8 mx-auto">
         <div class="vl-event-content-area ml-50">
           <div class="vl-large-thumb">
-            <img class="w-100" src="assets/img/cause/vl-cause-learge-thumb.png" alt="">
+            <img
+              class="w-100"
+              ngSrc="assets/img/cause/vl-cause-learge-thumb.png"
+              width="800"
+              height="500"
+              alt="Cause"
+            />
           </div>
 
           <div class="vl-event-box-bg cause-box-bg">
@@ -23,17 +29,35 @@
                 </div>
               </div>
 
-
-              <div class="display-amount" id="displayAmount">{{selectedAmount|currency}}</div>
+              <div class="display-amount" id="displayAmount">
+                {{ selectedAmount | currency }}
+              </div>
 
               <div class="amount-selector">
                 @for (amt of amounts; track $index) {
-                <button class="button selected" (click)="selectAmount(amt)"
-                  [class.selected]="amt === selectedAmount"><span><img src="assets/img/icons/dollar.svg"
-                      alt=""></span>{{amt}}</button>
+                  <button
+                    class="button selected"
+                    (click)="selectAmount(amt)"
+                    [class.selected]="amt === selectedAmount"
+                  >
+                    <span
+                      ><img
+                        ngSrc="assets/img/icons/dollar.svg"
+                        width="14"
+                        height="14"
+                        alt="Dollar" /></span
+                    >{{ amt }}
+                  </button>
                 }
                 <div class="custom-button">
-                  Custom Amount <span><img src="assets/img/icons/custom-amou.svg" alt=""></span>
+                  Custom Amount
+                  <span
+                    ><img
+                      ngSrc="assets/img/icons/custom-amou.svg"
+                      width="14"
+                      height="14"
+                      alt="Custom"
+                  /></span>
                 </div>
               </div>
 
@@ -45,12 +69,22 @@
                   <!-- btn -->
                   <div class="select-meth">
                     <div class="online">
-                      <input type="radio" id="Online" name="fav_language" value="Online">
-                      <label for="Online">Online Donation</label><br>
+                      <input
+                        type="radio"
+                        id="Online"
+                        name="fav_language"
+                        value="Online"
+                      />
+                      <label for="Online">Online Donation</label><br />
                     </div>
 
                     <div class="ofline">
-                      <input type="radio" id="Offline" name="fav_language" value="Offline">
+                      <input
+                        type="radio"
+                        id="Offline"
+                        name="fav_language"
+                        value="Offline"
+                      />
                       <label for="Offline">Offline Donation</label>
                     </div>
                   </div>
@@ -62,22 +96,23 @@
                 <form action="#">
                   <div class="row">
                     <div class="col-lg-4 col-md-6 mb-20">
-                      <input type="text" placeholder="First Name">
+                      <input type="text" placeholder="First Name" />
                     </div>
                     <div class="col-lg-4 col-md-6 mb-20">
-                      <input type="text" placeholder="Last Name">
+                      <input type="text" placeholder="Last Name" />
                     </div>
                     <div class="col-lg-4 col-md-6 mb-20">
-                      <input type="email" placeholder="Email Address">
+                      <input type="email" placeholder="Email Address" />
                     </div>
                   </div>
-
-
                 </form>
                 <div class="total-anoumt">
                   <div class="toal">
                     <div class="btn-area">
-                      <button class="header-btn1">Donate <span><i class="fa-solid fa-arrow-right"></i></span></button>
+                      <button class="header-btn1">
+                        Donate
+                        <span><i class="fa-solid fa-arrow-right"></i></span>
+                      </button>
                     </div>
                   </div>
                   <div class="content">
@@ -90,40 +125,62 @@
 
           <div class="event-content-area">
             <h2 class="title">Hunger Relief and Food</h2>
-            <p class="para">Our causes reflect the diverse and pressing needs of communities worldwide. From supporting
-              education and healthcare to providing disaster relief and environmental protection, each cause we champion
-              is a step a more just & compassionate world.</p>
+            <p class="para">
+              Our causes reflect the diverse and pressing needs of communities
+              worldwide. From supporting education and healthcare to providing
+              disaster relief and environmental protection, each cause we
+              champion is a step a more just & compassionate world.
+            </p>
 
             <p class="para">
-              We work closely with local partners to identify areas where our support can make the greatest impact,
-              ensuring that every donation and effort goes directly toward creating.
+              We work closely with local partners to identify areas where our
+              support can make the greatest impact, ensuring that every donation
+              and effort goes directly toward creating.
             </p>
 
             <h2 class="title">Creating Lasting Impact Together</h2>
-            <p class="para">Our causes represent the heart of our mission, each one addressing critical need within our
-              communities. From providing access to clean water & nutritious food to supporting education, healthcare,
-              and disaster relief, we work tirelessly to uplift and empower.</p>
-
+            <p class="para">
+              Our causes represent the heart of our mission, each one addressing
+              critical need within our communities. From providing access to
+              clean water & nutritious food to supporting education, healthcare,
+              and disaster relief, we work tirelessly to uplift and empower.
+            </p>
 
             <h2 class="title">Transforming Lives and Communities</h2>
-            <p class="para">Every cause we champion is chosen for its potential to create meaningful, sustainable change
-              and to build a foundation for a brighter, more equitable future. By focusing our efforts on these key
-              areas, we’re able to drive long-term impact and support.</p>
-            <p class="para">Each cause we support reflects our commitment to addressing urgent needs & creating
-              sustainable change. Our focus include providing access to clean water, supporting.</p>
+            <p class="para">
+              Every cause we champion is chosen for its potential to create
+              meaningful, sustainable change and to build a foundation for a
+              brighter, more equitable future. By focusing our efforts on these
+              key areas, we’re able to drive long-term impact and support.
+            </p>
+            <p class="para">
+              Each cause we support reflects our commitment to addressing urgent
+              needs & creating sustainable change. Our focus include providing
+              access to clean water, supporting.
+            </p>
 
             <h2 class="title">Causes That Matter</h2>
-            <p class="para">By focusing our efforts on these key areas, we’re able to drive long-term impact and support
-              the resilience of individuals and families worldwide. Join us as we continue to make a difference where
-              it’s needed most, turning hope into action, one cause at a time.</p>
+            <p class="para">
+              By focusing our efforts on these key areas, we’re able to drive
+              long-term impact and support the resilience of individuals and
+              families worldwide. Join us as we continue to make a difference
+              where it’s needed most, turning hope into action, one cause at a
+              time.
+            </p>
 
-            <p class="para">We’re able to drive long-term impact and support the resilience of individuals families
-              worldwide. Join us as we continue to make a difference where it’s needed most, turning.</p>
+            <p class="para">
+              We’re able to drive long-term impact and support the resilience of
+              individuals families worldwide. Join us as we continue to make a
+              difference where it’s needed most, turning.
+            </p>
 
             <h2 class="title">Challenge</h2>
-            <p class="para">Vestibulum bandit libero at mauri's condiment scelerisque. In scelerisque in mauri's ut
-              malassada. Nam so dales scelerisque ipsum sed vestibulum. Aliquam euismod mi vitae nibh placerat, nec
-              auctor neque lacinia. Curabitur gravida orci purus.</p>
+            <p class="para">
+              Vestibulum bandit libero at mauri's condiment scelerisque. In
+              scelerisque in mauri's ut malassada. Nam so dales scelerisque
+              ipsum sed vestibulum. Aliquam euismod mi vitae nibh placerat, nec
+              auctor neque lacinia. Curabitur gravida orci purus.
+            </p>
           </div>
         </div>
       </div>

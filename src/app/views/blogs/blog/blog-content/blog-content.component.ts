@@ -1,6 +1,8 @@
+import { NgOptimizedImage } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { RouterLink } from "@angular/router";
 import { SanityService } from "../../../../service/sanity.service";
+import type { BlogPost } from "../../../../models/blog-post.model";
 
 interface BlogPostView {
   id?: string;
@@ -13,21 +15,84 @@ interface BlogPostView {
 
 @Component({
   selector: "app-blog-content",
-  imports: [RouterLink],
+  imports: [RouterLink, NgOptimizedImage],
   templateUrl: "./blog-content.component.html",
   styleUrls: ["./blog-content.component.scss"],
 })
 export class BlogContentComponent implements OnInit {
   blogs: BlogPostView[] = [];
+  isLoading = true;
+  currentPage = 1;
+  pageSize = 6;
+
+  get totalPages(): number {
+    return Math.max(1, Math.ceil(this.blogs.length / this.pageSize));
+  }
+
+  get pagedBlogs(): BlogPostView[] {
+    const start = (this.currentPage - 1) * this.pageSize;
+    return this.blogs.slice(start, start + this.pageSize);
+  }
+
+  get pages(): number[] {
+    return Array.from({ length: this.totalPages }, (_, i) => i + 1);
+  }
 
   constructor(private sanity: SanityService) {}
 
   async ngOnInit(): Promise<void> {
-    if (!this.sanity.isConfigured()) {
-      // fallback to static content if Sanity not configured
+    try {
+      if (!this.sanity.isConfigured()) {
+        // fallback to static content if Sanity not configured
+        try {
+          const { BLOG_POSTS } = await import("../../../../data/blog-posts");
+          const staticBlogs: BlogPost[] = BLOG_POSTS;
+          this.blogs = staticBlogs.map((b) => ({
+            id: String(b.id),
+            image: b.image,
+            title: b.title,
+            description: b.description,
+            author: b.author,
+            date: b.date,
+          }));
+          this.resetPagination();
+          return;
+        } catch {
+          this.blogs = [];
+          this.resetPagination();
+          return;
+        }
+      }
+
       try {
-        const { blogs: staticBlogs } = await import("../../data");
-        this.blogs = staticBlogs.map((b: any) => ({
+        const results = await this.sanity.allOfType<any>(
+          "blogPost",
+          "title, slug, excerpt, author->{name}, publishedAt",
+        );
+        this.blogs = (results || []).map((r: any) => ({
+          id: r._id,
+          title: r.title,
+          description:
+            r.excerpt ||
+            (Array.isArray(r.content)
+              ? r.content
+                  .map((c: any) =>
+                    (c.children || []).map((ch: any) => ch.text || "").join(""),
+                  )
+                  .join("\n")
+              : ""),
+          author: r.author?.name || "",
+          date: r.publishedAt
+            ? new Date(r.publishedAt).toLocaleDateString()
+            : "",
+        }));
+        this.resetPagination();
+      } catch (err) {
+        console.error("Failed to fetch blogs from Sanity", err);
+        // fallback to static
+        const { BLOG_POSTS } = await import("../../../../data/blog-posts");
+        const staticBlogs: BlogPost[] = BLOG_POSTS;
+        this.blogs = staticBlogs.map((b) => ({
           id: String(b.id),
           image: b.image,
           title: b.title,
@@ -35,45 +100,21 @@ export class BlogContentComponent implements OnInit {
           author: b.author,
           date: b.date,
         }));
-        return;
-      } catch {
-        this.blogs = [];
-        return;
+        this.resetPagination();
       }
+    } finally {
+      this.isLoading = false;
     }
+  }
 
-    try {
-      const results = await this.sanity.allOfType<any>(
-        "blogPost",
-        "title, slug, excerpt, author->{name}, publishedAt"
-      );
-      this.blogs = (results || []).map((r: any) => ({
-        id: r._id,
-        title: r.title,
-        description:
-          r.excerpt ||
-          (Array.isArray(r.content)
-            ? r.content
-                .map((c: any) =>
-                  (c.children || []).map((ch: any) => ch.text || "").join("")
-                )
-                .join("\n")
-            : ""),
-        author: r.author?.name || "",
-        date: r.publishedAt ? new Date(r.publishedAt).toLocaleDateString() : "",
-      }));
-    } catch (err) {
-      console.error("Failed to fetch blogs from Sanity", err);
-      // fallback to static
-      const { blogs: staticBlogs } = await import("../../data");
-      this.blogs = staticBlogs.map((b: any) => ({
-        id: String(b.id),
-        image: b.image,
-        title: b.title,
-        description: b.description,
-        author: b.author,
-        date: b.date,
-      }));
+  goToPage(page: number): void {
+    if (page < 1 || page > this.totalPages) {
+      return;
     }
+    this.currentPage = page;
+  }
+
+  private resetPagination(): void {
+    this.currentPage = 1;
   }
 }

@@ -1,11 +1,10 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
+import { NgOptimizedImage } from "@angular/common";
 
 @Component({
-  selector: 'app-mission-area',
-  imports: [],
-  templateUrl: './mission-area.component.html',
-  styleUrl: './mission-area.component.scss'
+  selector: "app-mission-area",
+  imports: [NgOptimizedImage],
+  templateUrl: "./mission-area.component.html",
+  styleUrl: "./mission-area.component.scss",
 })
-export class MissionAreaComponent {
-
-}
+export class MissionAreaComponent {}

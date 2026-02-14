@@ -1,18 +1,2 @@
-export interface BlogPost {
-    id: number;
-    image: string;
-    title: string;
-    description: string;
-    author: string;
-    date: string;
-}
-
-
-export const blogs: BlogPost[] = [
-    { id: 1, image: 'assets/img/blog/vl-blg-1.1.png', title: 'Stories from the Field', description: 'Get inside look at the real-life experiences...', author: 'Kyle Miller', date: '16 October 2025' },
-    { id: 2, image: 'assets/img/blog/vl-blog-inner-1.2.png', title: 'Tips for Disaster Preparedness', description: 'Disasters strike unexpectedly...', author: 'Leg Colleen', date: '16 October 2025' },
-    { id: 3, image: 'assets/img/blog/vl-blg-1.3.png', title: 'Partnering for Good', description: 'Relief efforts are most effective when...', author: 'Leg Colleen', date: '16 October 2025' },
-    { id: 4, image: 'assets/img/blog/vl-blog-inner-1.3.png', title: 'Stories of Change', description: 'Our blog is a place to celebrate...', author: 'Andrew Ncer', date: '16 October 2025' },
-    { id: 5, image: 'assets/img/blog/vl-blog-inner-1.5.png', title: 'Making a Difference', description: 'You’ll also find updates on...', author: 'Kay O\'Reilly', date: '16 October 2025' },
-    { id: 6, image: 'assets/img/blog/vl-blog-inner-1.6.png', title: 'Empowering Lives', description: 'Whether you’re looking for inspiration...', author: 'Janice Russel', date: '16 October 2025' },
-];  
+export type { BlogPost } from "../../models/blog-post.model";
+export { BLOG_POSTS as blogs } from "../../data/blog-posts";
