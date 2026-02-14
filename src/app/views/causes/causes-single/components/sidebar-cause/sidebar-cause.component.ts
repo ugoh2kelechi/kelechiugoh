@@ -1,5 +1,6 @@
 import { CommonModule, NgOptimizedImage } from "@angular/common";
 import { Component } from "@angular/core";
+import { RouterLink } from "@angular/router";
 import {
   DEFAULT_DONATION_AMOUNT,
   DONATION_AMOUNTS,
@@ -7,7 +8,7 @@ import {
 
 @Component({
   selector: "app-sidebar-cause",
-  imports: [CommonModule, NgOptimizedImage],
+  imports: [CommonModule, NgOptimizedImage, RouterLink],
   templateUrl: "./sidebar-cause.component.html",
   styleUrls: ["./sidebar-cause.component.scss"],
 })

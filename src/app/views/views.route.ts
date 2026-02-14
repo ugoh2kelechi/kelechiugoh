@@ -6,8 +6,11 @@ import { CausesSingleComponent } from "./causes/causes-single/causes-single.comp
 import { EventsComponent } from "./events/events/events.component";
 import { EventsSingleComponent } from "./events/events-single/events-single.component";
 import { ContactComponent } from "./pages/contact/contact.component";
+import { DonationComponent } from "./pages/donation/donation.component";
 import { FaqComponent } from "./pages/faq/faq.component";
+import { PrivacyPolicyComponent } from "./pages/privacy-policy/privacy-policy.component";
 import { ServicesComponent } from "./pages/services/services.component";
+import { TermsConditionsComponent } from "./pages/terms-conditions/terms-conditions.component";
 import { VolunteersComponent } from "./pages/volunteers/volunteers.component";
 import { Error404Component } from "./pages/error404/error404.component";
 import { AboutComponent } from "./about/about.component";
@@ -85,6 +88,30 @@ export const VIEWS_ROUTE: Route[] = [
     data: {
       title: "Services | Kelechi K. Ugoh",
       description: "Our services and programs for community impact.",
+    },
+  },
+  {
+    path: "donation",
+    component: DonationComponent,
+    data: {
+      title: "Donation | Kelechi K. Ugoh",
+      description: "Support our mission with a donation.",
+    },
+  },
+  {
+    path: "privacy-policy",
+    component: PrivacyPolicyComponent,
+    data: {
+      title: "Privacy Policy | Kelechi K. Ugoh",
+      description: "Learn how we collect, use, and protect your data.",
+    },
+  },
+  {
+    path: "terms-conditions",
+    component: TermsConditionsComponent,
+    data: {
+      title: "Terms & Conditions | Kelechi K. Ugoh",
+      description: "Review our terms and conditions of use.",
     },
   },
   {

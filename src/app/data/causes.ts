@@ -4,7 +4,7 @@ export const CAUSES: CauseItem[] = [
   {
     title: "Medical And Assistance",
     image: "assets/img/cause/vl-caluse-iner-1.1.png",
-    donationLink: "cause-single",
+    donationLink: "/donation",
     progress: 16,
     raised: 13000,
     goal: 85000,
@@ -15,7 +15,7 @@ export const CAUSES: CauseItem[] = [
   {
     title: "Hunger Relief and Food",
     image: "assets/img/cause/vl-cause-1.1.png",
-    donationLink: "cause-single",
+    donationLink: "/donation",
     progress: 16,
     raised: 26000,
     goal: 90000,
@@ -26,7 +26,7 @@ export const CAUSES: CauseItem[] = [
   {
     title: "Shelter and Housing",
     image: "assets/img/cause/vl-cause-1.3.png",
-    donationLink: "cause-single",
+    donationLink: "/donation",
     progress: 24,
     raised: 13701,
     goal: 60000,
@@ -37,7 +37,7 @@ export const CAUSES: CauseItem[] = [
   {
     title: "Help for the needy",
     image: "assets/img/cause/vl-cause-inner-1.2.png",
-    donationLink: "cause-single",
+    donationLink: "/donation",
     progress: 24,
     raised: 13000,
     goal: 85000,
@@ -48,7 +48,7 @@ export const CAUSES: CauseItem[] = [
   {
     title: "Medical assistance",
     image: "assets/img/cause/vl-cause-inner-1.3.png",
-    donationLink: "cause-single",
+    donationLink: "/donation",
     progress: 24,
     raised: 26000,
     goal: 90000,
@@ -59,7 +59,7 @@ export const CAUSES: CauseItem[] = [
   {
     title: "Fees for victims",
     image: "assets/img/cause/vl-cause-1.2.png",
-    donationLink: "cause-single",
+    donationLink: "/donation",
     progress: 24,
     raised: 13701,
     goal: 60000,

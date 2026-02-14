@@ -40,8 +40,7 @@ export const FOOTER_QUICK_LINKS: FooterLink[] = [
 ];
 
 export const FOOTER_SERVICES: FooterLink[] = [
-  { label: "Donation Online", url: "#" },
-  { label: "Donor Centres", url: "#" },
+  { label: "Donation", url: "/donation" },
   { label: "Volunteering", url: "/volunteers" },
   { label: "Your Philanthropy", url: "#" },
 ];
