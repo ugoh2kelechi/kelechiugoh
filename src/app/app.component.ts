@@ -14,7 +14,6 @@ import {
 } from "@angular/router";
 import { filter } from "rxjs/operators";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import AOS from "aos";
 import { TitleService } from "./service/title.service";
 
 @Component({
@@ -38,7 +37,6 @@ export class AppComponent {
 
   ngOnInit() {
     this.titleService.init();
-    AOS.init();
     this.router.events
       .pipe(
         filter(

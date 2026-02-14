@@ -12,6 +12,7 @@ import { VolunteersComponent } from "./pages/volunteers/volunteers.component";
 import { Error404Component } from "./pages/error404/error404.component";
 import { AboutComponent } from "./about/about.component";
 import { IndexComponent } from "./index/index.component";
+import { TestimonialsRedirectComponent } from "./pages/testimonials-redirect/testimonials-redirect.component";
 
 export const VIEWS_ROUTE: Route[] = [
   {
@@ -108,6 +109,14 @@ export const VIEWS_ROUTE: Route[] = [
     data: {
       title: "Contact | Kelechi K. Ugoh",
       description: "Get in touch with us.",
+    },
+  },
+  {
+    path: "testimonials",
+    component: TestimonialsRedirectComponent,
+    data: {
+      title: "Testimonials | Kelechi K. Ugoh",
+      description: "Read testimonials and stories of impact.",
     },
   },
   {
