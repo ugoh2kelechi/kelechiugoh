@@ -4,147 +4,83 @@
       <div class="col-lg-6">
         <div class="testimonial-slides-wrap">
           <!-- slider thumbnail -->
-          <div class="slider-thumb slider-for1">
-            <div class="single-thumb">
-              <img
-                class="w-100"
-                src="assets/img/testimonial/vl-testimonial-large-thumb-4.1.png"
-                alt=""
-              />
-            </div>
-            <div class="single-thumb">
-              <img
-                class="w-100"
-                src="assets/img/testimonial/test-img.jpg"
-                alt=""
-              />
-            </div>
-          </div>
+          <owl-carousel-o
+            #thumbCarousel
+            [options]="thumbOptions"
+            class="slider-thumb slider-for1"
+            (translated)="onThumbTranslated($event)"
+          >
+            <ng-template carouselSlide *ngFor="let item of testimonials">
+              <div class="single-thumb">
+                <img class="w-100" [src]="item.imageLarge" [alt]="item.name" />
+              </div>
+            </ng-template>
+          </owl-carousel-o>
 
           <div class="content-box-2">
-            <div class="slider-sm slider-nav1 p-relative">
+            <owl-carousel-o
+              #contentCarousel
+              [options]="contentOptions"
+              class="slider-sm slider-nav1 p-relative"
+              (translated)="onContentTranslated($event)"
+            >
               <!-- silder item -->
-              <div class="slider-content-box content-box2">
-                <div class="icon">
-                  <ul>
-                    <li>
-                      <span
-                        ><img
-                          src="assets/img/icons/vl-review-icon-4.1.svg"
-                          alt=""
-                      /></span>
-                    </li>
-                    <li>
-                      <span
-                        ><img
-                          src="assets/img/icons/vl-review-icon-4.1.svg"
-                          alt=""
-                      /></span>
-                    </li>
-                    <li>
-                      <span
-                        ><img
-                          src="assets/img/icons/vl-review-icon-4.1.svg"
-                          alt=""
-                      /></span>
-                    </li>
-                    <li>
-                      <span
-                        ><img
-                          src="assets/img/icons/vl-review-icon-4.1.svg"
-                          alt=""
-                      /></span>
-                    </li>
-                    <li>
-                      <span
-                        ><img
-                          src="assets/img/icons/vl-review-icon-4.1.svg"
-                          alt=""
-                      /></span>
-                    </li>
-                  </ul>
-                </div>
-                <p class="para">
-                  "Leadership is about service. When the floods came, many
-                  promised help, but this foundation was the first on the ground
-                  with food and medical supplies. They are a true partner to our
-                  people."
-                </p>
-                <div class="slider-flex">
-                  <div class="user">
-                    <img
-                      src="assets/img/testimonial/vl-sm-thumb-4.1.png"
-                      alt=""
-                    />
+              <ng-template carouselSlide *ngFor="let item of testimonials">
+                <div class="slider-content-box content-box2">
+                  <div class="icon">
+                    <ul>
+                      <li>
+                        <span
+                          ><img
+                            src="assets/img/icons/vl-review-icon-4.1.svg"
+                            alt=""
+                        /></span>
+                      </li>
+                      <li>
+                        <span
+                          ><img
+                            src="assets/img/icons/vl-review-icon-4.1.svg"
+                            alt=""
+                        /></span>
+                      </li>
+                      <li>
+                        <span
+                          ><img
+                            src="assets/img/icons/vl-review-icon-4.1.svg"
+                            alt=""
+                        /></span>
+                      </li>
+                      <li>
+                        <span
+                          ><img
+                            src="assets/img/icons/vl-review-icon-4.1.svg"
+                            alt=""
+                        /></span>
+                      </li>
+                      <li>
+                        <span
+                          ><img
+                            src="assets/img/icons/vl-review-icon-4.1.svg"
+                            alt=""
+                        /></span>
+                      </li>
+                    </ul>
                   </div>
-                  <div class="content">
-                    <a href="javascript:void(0);" class="title">Chief Okon</a>
-                    <span>Traditional Ruler</span>
+                  <p class="para">"{{ item.text }}"</p>
+                  <div class="slider-flex">
+                    <div class="user">
+                      <img [src]="item.imageSmall" [alt]="item.name" />
+                    </div>
+                    <div class="content">
+                      <a href="javascript:void(0);" class="title">{{
+                        item.name
+                      }}</a>
+                      <span>{{ item.role }}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              <!-- silder item -->
-              <div class="slider-content-box content-box2">
-                <div class="icon">
-                  <ul>
-                    <li>
-                      <span
-                        ><img
-                          src="assets/img/icons/vl-review-icon-4.1.svg"
-                          alt=""
-                      /></span>
-                    </li>
-                    <li>
-                      <span
-                        ><img
-                          src="assets/img/icons/vl-review-icon-4.1.svg"
-                          alt=""
-                      /></span>
-                    </li>
-                    <li>
-                      <span
-                        ><img
-                          src="assets/img/icons/vl-review-icon-4.1.svg"
-                          alt=""
-                      /></span>
-                    </li>
-                    <li>
-                      <span
-                        ><img
-                          src="assets/img/icons/vl-review-icon-4.1.svg"
-                          alt=""
-                      /></span>
-                    </li>
-                    <li>
-                      <span
-                        ><img
-                          src="assets/img/icons/vl-review-icon-4.1.svg"
-                          alt=""
-                      /></span>
-                    </li>
-                  </ul>
-                </div>
-                <p class="para">
-                  "For years, our women walked miles for water. Now, with the
-                  new borehole in our village square, my grandchildren have time
-                  for their books and I have peace in my heart. This foundation
-                  is a blessing to our soil."
-                </p>
-                <div class="slider-flex">
-                  <div class="user">
-                    <img
-                      src="assets/img/testimonial/vl-sm-thumb-4.1.png"
-                      alt=""
-                    />
-                  </div>
-                  <div class="content">
-                    <a href="javascript:void(0);" class="title">Mama Adewale</a>
-                    <span>Community Elder</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+              </ng-template>
+            </owl-carousel-o>
           </div>
         </div>
       </div>

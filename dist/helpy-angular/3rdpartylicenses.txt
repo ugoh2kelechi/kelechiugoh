@@ -309,13 +309,13 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 --------------------------------------------------------------------------------
-Package: gsap
-License: "Standard 'no charge' license: https://gsap.com/standard-license. Club GSAP members get more: https://gsap.com/licensing/. Why GreenSock doesn't employ an MIT license: https://gsap.com/why-license/"
+Package: ngx-owl-carousel-o
+License: "MIT"
 
 
 --------------------------------------------------------------------------------
-Package: ngx-owl-carousel-o
-License: "MIT"
+Package: gsap
+License: "Standard 'no charge' license: https://gsap.com/standard-license. Club GSAP members get more: https://gsap.com/licensing/. Why GreenSock doesn't employ an MIT license: https://gsap.com/why-license/"
 
 
 --------------------------------------------------------------------------------
