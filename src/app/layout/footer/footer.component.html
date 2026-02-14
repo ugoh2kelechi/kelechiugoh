@@ -16,7 +16,13 @@
             <ul>
               @for (social of socialLinks; track $index) {
                 <li>
-                  <a [href]="social.link"><i [class]="social.icon"></i></a>
+                  <a
+                    [href]="social.link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i [class]="social.icon"></i>
+                  </a>
                 </li>
               }
             </ul>
@@ -77,7 +83,7 @@
       <div class="row">
         <div class="col-md-6">
           <p class="vl-copyright-text">
-            © {{ year }} Kelechi.K.Ugoh. All Rights Reserved.
+            © {{ year }} Kelechi .K. Ugoh. All Rights Reserved.
           </p>
         </div>
         <div class="col-md-6">

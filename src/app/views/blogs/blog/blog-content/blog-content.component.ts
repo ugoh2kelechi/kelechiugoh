@@ -6,6 +6,7 @@ import type { BlogPost } from "../../../../models/blog-post.model";
 
 interface BlogPostView {
   id?: string;
+  slug?: string;
   image?: string;
   title: string;
   description?: string;
@@ -67,10 +68,12 @@ export class BlogContentComponent implements OnInit {
       try {
         const results = await this.sanity.allOfType<any>(
           "blogPost",
-          "title, slug, excerpt, author->{name}, publishedAt",
+          "title, slug, excerpt, content, featuredImage, author->{name}, publishedAt",
         );
         this.blogs = (results || []).map((r: any) => ({
-          id: r._id,
+          id: r.slug?.current ?? r._id,
+          slug: r.slug?.current ?? "",
+          image: this.sanity.imageUrl(r.featuredImage),
           title: r.title,
           description:
             r.excerpt ||
