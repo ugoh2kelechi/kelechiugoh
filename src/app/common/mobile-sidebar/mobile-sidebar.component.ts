@@ -2,7 +2,7 @@ import { CommonModule } from "@angular/common";
 // import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { RouterLink } from "@angular/router";
-import { menuItems } from "./data";
+import { MOBILE_MENU_ITEMS } from "../../data/mobile-menu";
 import type { MobileMenuItem } from "../../models/mobile-menu-item.model";
 @Component({
   selector: "app-mobile-sidebar",
@@ -19,7 +19,7 @@ export class MobileSidebarComponent {
 
   ngOnInit() {
     // this.http.get<MenuItem[]>('assets/menu.json').subscribe(data => {
-    this.menuItems = menuItems;
+    this.menuItems = MOBILE_MENU_ITEMS;
     // });
   }
 
