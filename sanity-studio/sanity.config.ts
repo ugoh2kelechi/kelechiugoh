@@ -8,7 +8,7 @@ export default defineConfig({
   title: 'kelechiugoh',
 
   projectId: 'ofk5anw5',
-  dataset: 'production',
+  dataset: 'development',
 
   plugins: [structureTool(), visionTool()],
 

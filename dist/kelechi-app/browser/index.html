@@ -9,7 +9,7 @@
 
     <!-- Sanity runtime configuration (leave token empty in source; set via env or server-side injection) -->
     <meta name="sanity-project-id" content="ofk5anw5">
-    <meta name="sanity-dataset" content="production">
+    <meta name="sanity-dataset" content="development">
     <meta name="sanity-api-version" content="2025-01-01">
     <meta name="sanity-use-cdn" content="true">
     <meta name="sanity-perspective" content="published">
@@ -30,7 +30,7 @@
 
           const cfg = {
             projectId,
-            dataset: meta("sanity-dataset") || "production",
+            dataset: meta("sanity-dataset") || "development",
             apiVersion: meta("sanity-api-version") || "2025-01-01",
             useCdn: (meta("sanity-use-cdn") || "true") === "true",
             perspective: meta("sanity-perspective") || "published",
@@ -49,5 +49,5 @@
 
   <body class="homepage1-body">
     <app-root></app-root>
-  <link rel="modulepreload" href="chunk-Z3HJN472.js"><link rel="modulepreload" href="chunk-EQDQRRRY.js"><script src="polyfills-ZX45WAH4.js" type="module"></script><script src="main-6PXP76PZ.js" type="module"></script></body>
+  <link rel="modulepreload" href="chunk-6MFL6PRF.js"><link rel="modulepreload" href="chunk-EQDQRRRY.js"><script src="polyfills-ZX45WAH4.js" type="module"></script><script src="main-W7P5DXO3.js" type="module"></script></body>
 </html>
