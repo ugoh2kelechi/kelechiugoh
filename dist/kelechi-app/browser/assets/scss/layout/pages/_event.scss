@@ -218,19 +218,6 @@
         @media #{$md,$xs}{
             text-align: start;
         }
-        &:after{
-            position: absolute;
-            content: "";
-            height: 200px;
-            width: 4px;
-            background: #fff;
-            left:120px;
-            top: 0;
-            border-radius: 8px;
-            @media #{$md,$xs}{
-                display: none;
-            }
-        }
         & .title{
             color: var(--ztc-text-text-3);
             font-size: var(--ztc-font-size-font-s44);
@@ -313,10 +300,6 @@
     &.active{
         background: var(--ztc-text-text-4);
         transition: .3s;
-
-        .event-date:after {
-            background: #E3C059;
-        }
         & .event-content{
             position: relative;
             z-index: 1;
