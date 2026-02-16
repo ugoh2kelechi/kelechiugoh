@@ -3,6 +3,7 @@ import {
   Component,
   ElementRef,
   HostListener,
+  OnInit,
   OnDestroy,
 } from "@angular/core";
 import { AlertComponent } from "../alert/alert.component";
@@ -12,6 +13,7 @@ import { FooterComponent } from "../footer/footer.component";
 import { SubscribeComponent } from "../../common/subscribe/subscribe.component";
 import { MobileSidebarComponent } from "../../common/mobile-sidebar/mobile-sidebar.component";
 import { PageScrollComponent } from "../page-scroll/page-scroll.component";
+import { LatestCauseLinkService } from "../../service/latest-cause-link.service";
 
 @Component({
   selector: "app-layout",
@@ -27,11 +29,20 @@ import { PageScrollComponent } from "../page-scroll/page-scroll.component";
   templateUrl: "./layout.component.html",
   styleUrls: ["./layout.component.scss"],
 })
-export class LayoutComponent implements AfterViewInit, OnDestroy {
+export class LayoutComponent implements AfterViewInit, OnInit, OnDestroy {
   isMenuOpen = false;
   private headerEl: HTMLElement | null = null;
   private rafId: number | null = null;
-  constructor(private el: ElementRef) {}
+  donateLink = "/cause-details";
+
+  constructor(
+    private el: ElementRef,
+    private latestCauseLink: LatestCauseLinkService,
+  ) {}
+
+  async ngOnInit(): Promise<void> {
+    this.donateLink = await this.latestCauseLink.getLatestCauseLink();
+  }
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;

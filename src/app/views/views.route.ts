@@ -6,7 +6,6 @@ import { CausesSingleComponent } from "./causes/causes-single/causes-single.comp
 import { EventsComponent } from "./events/events/events.component";
 import { EventsSingleComponent } from "./events/events-single/events-single.component";
 import { ContactComponent } from "./pages/contact/contact.component";
-import { DonationComponent } from "./pages/donation/donation.component";
 import { FaqComponent } from "./pages/faq/faq.component";
 import { PrivacyPolicyComponent } from "./pages/privacy-policy/privacy-policy.component";
 import { ServicesComponent } from "./pages/services/services.component";
@@ -129,14 +128,6 @@ export const VIEWS_ROUTE: Route[] = [
     data: {
       title: "Services | Kelechi K. Ugoh",
       description: "Our services and programs for community impact.",
-    },
-  },
-  {
-    path: "donation",
-    component: DonationComponent,
-    data: {
-      title: "Donation | Kelechi K. Ugoh",
-      description: "Support our mission with a donation.",
     },
   },
   {

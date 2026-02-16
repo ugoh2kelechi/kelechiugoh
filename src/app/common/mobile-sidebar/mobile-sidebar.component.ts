@@ -1,25 +1,28 @@
 import { CommonModule } from "@angular/common";
 // import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, EventEmitter, Input, Output, OnInit } from "@angular/core";
 import { RouterLink } from "@angular/router";
 import { MOBILE_MENU_ITEMS } from "../../data/mobile-menu";
 import type { MobileMenuItem } from "../../models/mobile-menu-item.model";
+import { LatestCauseLinkService } from "../../service/latest-cause-link.service";
 @Component({
   selector: "app-mobile-sidebar",
   imports: [CommonModule, RouterLink],
   templateUrl: "./mobile-sidebar.component.html",
   styleUrls: ["./mobile-sidebar.component.scss"],
 })
-export class MobileSidebarComponent {
+export class MobileSidebarComponent implements OnInit {
   @Input() isMenuOpen = false;
   @Output() closeMenuEvent = new EventEmitter<void>();
   menuItems: MobileMenuItem[] = [];
+  donateLink = "/cause-details";
 
-  // constructor(private http: HttpClient) {}
+  constructor(private latestCauseLink: LatestCauseLinkService) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     // this.http.get<MenuItem[]>('assets/menu.json').subscribe(data => {
     this.menuItems = MOBILE_MENU_ITEMS;
+    this.donateLink = await this.latestCauseLink.getLatestCauseLink();
     // });
   }
 

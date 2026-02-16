@@ -38,7 +38,9 @@
                   [alt]="cause.title"
                 />
                 <div class="btn-area casue-btn text-center">
-                  <a [routerLink]="cause.donationLink" class="header-btn1"
+                  <a
+                    [routerLink]="['/cause-details', cause.slug]"
+                    class="header-btn1"
                     >Donation
                     <span><i class="fa-solid fa-arrow-right"></i></span
                   ></a>
