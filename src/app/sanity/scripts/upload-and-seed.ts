@@ -134,11 +134,13 @@ async function seedEvents() {
       title: event.eventTitle,
       slug: { _type: "slug", current: slug },
       description: event.eventTime,
+      eventTime: event.eventTime,
       eventDate: isNaN(dateIso.getTime())
         ? new Date().toISOString()
         : dateIso.toISOString(),
       location: event.location,
       eventType: "community",
+      detailsUrl: "/event-single",
       featuredImage: imageAssetId
         ? { _type: "image", asset: { _type: "reference", _ref: imageAssetId } }
         : undefined,
@@ -157,12 +159,20 @@ async function seedCauses() {
       title: cause.title,
       slug: { _type: "slug", current: slug },
       description: cause.description,
+      category: cause.category,
       status: "active",
+      donationLink: cause.donationLink,
+      raised: cause.raised,
+      goal: cause.goal,
+      progress: cause.progress,
       donationGoal: cause.goal,
       impactStats: [
         { _type: "object", label: "Raised", value: `$${cause.raised}` },
         { _type: "object", label: "Goal", value: `$${cause.goal}` },
       ],
+      mainImage: imageAssetId
+        ? { _type: "image", asset: { _type: "reference", _ref: imageAssetId } }
+        : undefined,
       gallery: imageAssetId
         ? [
             {

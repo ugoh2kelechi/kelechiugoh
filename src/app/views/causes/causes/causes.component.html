@@ -8,95 +8,114 @@
 </app-breadcrumb>
 <section class="vl-cause-inner sp2">
   <div class="container">
-    <div class="row">
-      @for (cause of pagedCauses; track $index) {
-        <div class="col-lg-4 col-md-6">
-          <div class="vl-single-cause-box gray-bg mb-30">
-            <div class="vl-cause-thumb">
-              <img
-                class="w-100"
-                [ngSrc]="cause.image"
-                width="600"
-                height="400"
-                [alt]="cause.title"
-              />
-              <div class="btn-area casue-btn text-center">
-                <a [routerLink]="cause.donationLink" class="header-btn1"
-                  >Donation <span><i class="fa-solid fa-arrow-right"></i></span
-                ></a>
-              </div>
+    @if (isLoading) {
+      <div class="row">
+        <div class="col-12">
+          <div class="d-flex align-items-center justify-content-center py-5">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Loading...</span>
             </div>
-            <div class="vl-cause-content">
-              <div class="vl-progress">
-                <div class="skill-progress">
-                  <div class="skill-box">
-                    <div class="skill-bar">
-                      <span
-                        class="skill-per"
-                        [ngStyle]="{ width: cause.progress + '%' }"
-                      >
-                        <span class="tooltipp">{{ cause.progress }}%</span>
-                      </span>
-                    </div>
-                    <div class="skill-vlue">
-                      <div class="num1">
-                        <span>Raised: </span>${{ cause.raised }}
+          </div>
+        </div>
+      </div>
+    } @else if (errorMessage) {
+      <div class="row">
+        <div class="col-12">
+          <p class="text-center py-5">{{ errorMessage }}</p>
+        </div>
+      </div>
+    } @else {
+      <div class="row">
+        @for (cause of pagedCauses; track $index) {
+          <div class="col-lg-4 col-md-6">
+            <div class="vl-single-cause-box gray-bg mb-30">
+              <div class="vl-cause-thumb">
+                <img
+                  class="w-100"
+                  [ngSrc]="cause.image"
+                  width="600"
+                  height="400"
+                  [alt]="cause.title"
+                />
+                <div class="btn-area casue-btn text-center">
+                  <a [routerLink]="cause.donationLink" class="header-btn1"
+                    >Donation
+                    <span><i class="fa-solid fa-arrow-right"></i></span
+                  ></a>
+                </div>
+              </div>
+              <div class="vl-cause-content">
+                <div class="vl-progress">
+                  <div class="skill-progress">
+                    <div class="skill-box">
+                      <div class="skill-bar">
+                        <span
+                          class="skill-per"
+                          [ngStyle]="{ width: cause.progress + '%' }"
+                        >
+                          <span class="tooltipp">{{ cause.progress }}%</span>
+                        </span>
                       </div>
-                      <div class="num1">
-                        <span>Goal: </span>${{ cause.goal }}
+                      <div class="skill-vlue">
+                        <div class="num1">
+                          <span>Raised: </span>${{ cause.raised }}
+                        </div>
+                        <div class="num1">
+                          <span>Goal: </span>${{ cause.goal }}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
+                <a href="javascript:void(0);" class="badge mt-32">{{
+                  cause.category
+                }}</a>
+                <h3 class="title">
+                  <a [routerLink]="cause.donationLink">{{ cause.title }}</a>
+                </h3>
+                <p>{{ cause.description }}</p>
               </div>
-              <a href="javascript:void(0);" class="badge mt-32">{{
-                cause.category
-              }}</a>
-              <h3 class="title">
-                <a [routerLink]="cause.donationLink">{{ cause.title }}</a>
-              </h3>
-              <p>{{ cause.description }}</p>
+            </div>
+          </div>
+        }
+      </div>
+
+      @if (totalPages > 1) {
+        <div class="row">
+          <div class="col-12 m-auto">
+            <div class="theme-pagination thme-pagination-mt text-center mt-18">
+              <ul>
+                <li [class.disabled]="currentPage === 1">
+                  <a
+                    href="javascript:void(0);"
+                    (click)="goToPage(currentPage - 1)"
+                  >
+                    <i class="fa-solid fa-angle-left"></i>
+                  </a>
+                </li>
+                @for (page of pages; track page) {
+                  <li>
+                    <a
+                      href="javascript:void(0);"
+                      [class.active]="page === currentPage"
+                      (click)="goToPage(page)"
+                      >{{ page }}</a
+                    >
+                  </li>
+                }
+                <li [class.disabled]="currentPage === totalPages">
+                  <a
+                    href="javascript:void(0);"
+                    (click)="goToPage(currentPage + 1)"
+                  >
+                    <i class="fa-solid fa-angle-right"></i>
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       }
-    </div>
-
-    @if (totalPages > 1) {
-      <div class="row">
-        <div class="col-12 m-auto">
-          <div class="theme-pagination thme-pagination-mt text-center mt-18">
-            <ul>
-              <li [class.disabled]="currentPage === 1">
-                <a
-                  href="javascript:void(0);"
-                  (click)="goToPage(currentPage - 1)"
-                >
-                  <i class="fa-solid fa-angle-left"></i>
-                </a>
-              </li>
-              @for (page of pages; track page) {
-                <li>
-                  <a
-                    href="javascript:void(0);"
-                    [class.active]="page === currentPage"
-                    (click)="goToPage(page)"
-                    >{{ page }}</a
-                  >
-                </li>
-              }
-              <li [class.disabled]="currentPage === totalPages">
-                <a
-                  href="javascript:void(0);"
-                  (click)="goToPage(currentPage + 1)"
-                >
-                  <i class="fa-solid fa-angle-right"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
     }
   </div>
 </section>

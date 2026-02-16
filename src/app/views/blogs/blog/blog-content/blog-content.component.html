@@ -10,6 +10,12 @@
           </div>
         </div>
       </div>
+    } @else if (errorMessage) {
+      <div class="row">
+        <div class="col-12">
+          <p class="text-center py-5">{{ errorMessage }}</p>
+        </div>
+      </div>
     } @else {
       <div class="row">
         <!-- Blog Posts -->

@@ -9,14 +9,14 @@ async function main() {
 
   if (!projectId) {
     console.error(
-      "SANITY_PROJECT_ID is required in the environment to run this script."
+      "SANITY_PROJECT_ID is required in the environment to run this script.",
     );
     process.exit(1);
   }
 
   if (!token) {
     console.error(
-      "SANITY_TOKEN is required to create documents. Set SANITY_TOKEN in env and try again."
+      "SANITY_TOKEN is required to create documents. Set SANITY_TOKEN in env and try again.",
     );
     process.exit(1);
   }
@@ -70,9 +70,11 @@ async function main() {
       current: slugify("Stand With Us Rally", { lower: true }),
     },
     description: "A community rally.",
+    eventTime: "8:00 am - 12:00 pm",
     eventDate: new Date().toISOString(),
     location: "City Hall",
     eventType: "rally",
+    detailsUrl: "/event-single",
   };
 
   const cause = {
@@ -83,6 +85,12 @@ async function main() {
       current: slugify("Emergency Relief Fund", { lower: true }),
     },
     description: "Help provide emergency relief.",
+    category: "Disasters",
+    donationLink: "/donation",
+    raised: 15000,
+    goal: 60000,
+    progress: 25,
+    status: "active",
   };
 
   // Create or replace documents

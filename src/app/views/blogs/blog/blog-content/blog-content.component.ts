@@ -2,7 +2,6 @@ import { NgOptimizedImage } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { RouterLink } from "@angular/router";
 import { SanityService } from "../../../../service/sanity.service";
-import type { BlogPost } from "../../../../models/blog-post.model";
 
 interface BlogPostView {
   id?: string;
@@ -23,6 +22,7 @@ interface BlogPostView {
 export class BlogContentComponent implements OnInit {
   blogs: BlogPostView[] = [];
   isLoading = true;
+  errorMessage = "";
   currentPage = 1;
   pageSize = 6;
 
@@ -44,25 +44,10 @@ export class BlogContentComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     try {
       if (!this.sanity.isConfigured()) {
-        // fallback to static content if Sanity not configured
-        try {
-          const { BLOG_POSTS } = await import("../../../../data/blog-posts");
-          const staticBlogs: BlogPost[] = BLOG_POSTS;
-          this.blogs = staticBlogs.map((b) => ({
-            id: String(b.id),
-            image: b.image,
-            title: b.title,
-            description: b.description,
-            author: b.author,
-            date: b.date,
-          }));
-          this.resetPagination();
-          return;
-        } catch {
-          this.blogs = [];
-          this.resetPagination();
-          return;
-        }
+        this.blogs = [];
+        this.errorMessage = "No records found.";
+        this.resetPagination();
+        return;
       }
 
       try {
@@ -89,20 +74,16 @@ export class BlogContentComponent implements OnInit {
             ? new Date(r.publishedAt).toLocaleDateString()
             : "",
         }));
+        if (!this.blogs.length) {
+          this.errorMessage = "No records found.";
+        } else {
+          this.errorMessage = "";
+        }
         this.resetPagination();
       } catch (err) {
         console.error("Failed to fetch blogs from Sanity", err);
-        // fallback to static
-        const { BLOG_POSTS } = await import("../../../../data/blog-posts");
-        const staticBlogs: BlogPost[] = BLOG_POSTS;
-        this.blogs = staticBlogs.map((b) => ({
-          id: String(b.id),
-          image: b.image,
-          title: b.title,
-          description: b.description,
-          author: b.author,
-          date: b.date,
-        }));
+        this.blogs = [];
+        this.errorMessage = "No records found.";
         this.resetPagination();
       }
     } finally {
