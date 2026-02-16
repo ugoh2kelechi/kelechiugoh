@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="row">
-      @for (cause of causes | slice: 0 : 3; track $index) {
+      @for (cause of causes | slice: 0 : 6; track $index) {
         <div class="col-lg-4 col-md-6">
           <div class="vl-single-cause-box gray-bg mb-30">
             <div class="vl-cause-thumb">
@@ -20,7 +20,9 @@
                 [alt]="cause.title"
               />
               <div class="btn-area casue-btn text-center">
-                <a [routerLink]="donateLink" class="header-btn1"
+                <a
+                  [routerLink]="['/cause-details', cause.slug || cause.id]"
+                  class="header-btn1"
                   >Donation <span><i class="fa-solid fa-arrow-right"></i></span
                 ></a>
               </div>

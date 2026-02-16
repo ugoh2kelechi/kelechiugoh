@@ -1,7 +1,7 @@
 import {
   isRecord,
   stegaClean
-} from "./chunk-VSI5VW7L.js";
+} from "./chunk-HQPZ7TBG.js";
 import {
   defer,
   firstValueFrom,
@@ -734,6 +734,10 @@ var printNoDefaultExport = createWarningPrinter([
 var printCreateVersionWithBaseIdWarning = createWarningPrinter([
   "You have called `createVersion()` with a defined `document`. The recommended approach is to provide a `baseId` and `releaseId` instead."
 ]);
+var printDeprecatedResourceConfigWarning = createWarningPrinter([
+  "The `~experimental_resource` configuration property has been renamed to `resource`.",
+  "Please update your client configuration to use `resource` instead. Support for `~experimental_resource` will be removed in a future version."
+]);
 
 // node_modules/nanoid/index.browser.js
 var random = (bytes) => crypto.getRandomValues(new Uint8Array(bytes));
@@ -1018,9 +1022,16 @@ var validateInsert = (at, selector, items) => {
     throw new Error(`${signature} takes an "items"-argument which must be an array`);
 };
 var hasDataset = (config) => {
-  if (!config.dataset)
-    throw new Error("`dataset` must be provided to perform queries");
-  return config.dataset || "";
+  if (config.dataset)
+    return config.dataset;
+  const resource = config.resource;
+  if (resource && resource.type === "dataset") {
+    const segments = resource.id.split(".");
+    if (segments.length !== 2)
+      throw new Error('Dataset resource ID must be in the format "project.dataset"');
+    return segments[1];
+  }
+  throw new Error("`dataset` must be provided to perform queries");
 };
 var requestTag = (tag) => {
   if (typeof tag != "string" || !/^[a-z0-9._-]{1,75}$/i.test(tag))
@@ -1030,9 +1041,10 @@ var requestTag = (tag) => {
   return tag;
 };
 var resourceConfig = (config) => {
-  if (!config["~experimental_resource"])
+  const resource = config.resource;
+  if (!resource)
     throw new Error("`resource` must be provided to perform resource queries");
-  const { type, id } = config["~experimental_resource"];
+  const { type, id } = resource;
   switch (type) {
     case "dataset": {
       if (id.split(".").length !== 2)
@@ -1048,7 +1060,7 @@ var resourceConfig = (config) => {
   }
 };
 var resourceGuard = (service, config) => {
-  if (config["~experimental_resource"])
+  if (config.resource)
     throw new Error(`\`${service}\` does not support resource-based operations`);
 };
 var EXPERIMENTAL_API_WARNING = "This is an experimental API version";
@@ -1096,6 +1108,10 @@ var printNoDefaultExport2 = createWarningPrinter2([
 var printCreateVersionWithBaseIdWarning2 = createWarningPrinter2([
   "You have called `createVersion()` with a defined `document`. The recommended approach is to provide a `baseId` and `releaseId` instead."
 ]);
+var printDeprecatedResourceConfigWarning2 = createWarningPrinter2([
+  "The `~experimental_resource` configuration property has been renamed to `resource`.",
+  "Please update your client configuration to use `resource` instead. Support for `~experimental_resource` will be removed in a future version."
+]);
 var defaultCdnHost = "apicdn.sanity.io";
 var defaultConfig = {
   apiHost: "https://api.sanity.io",
@@ -1123,14 +1139,16 @@ var initConfig = (config, prevConfig) => {
     stega: __spreadValues(__spreadValues({}, typeof prevConfig.stega == "boolean" ? { enabled: prevConfig.stega } : prevConfig.stega || defaultConfig.stega), typeof config.stega == "boolean" ? { enabled: config.stega } : config.stega || {})
   });
   specifiedConfig.apiVersion || printNoApiVersionSpecifiedWarning2();
-  const newConfig = __spreadValues(__spreadValues({}, defaultConfig), specifiedConfig), projectBased = newConfig.useProjectHostname && !newConfig["~experimental_resource"];
+  const newConfig = __spreadValues(__spreadValues({}, defaultConfig), specifiedConfig);
+  newConfig["~experimental_resource"] && !newConfig.resource && (printDeprecatedResourceConfigWarning2(), newConfig.resource = newConfig["~experimental_resource"]);
+  const resourceConfig$1 = newConfig.resource, projectBased = newConfig.useProjectHostname && !resourceConfig$1;
   if (typeof Promise > "u") {
     const helpUrl = generateHelpUrl2("js-client-promise-polyfill");
     throw new Error(`No native Promise-implementation found, polyfill needed - see ${helpUrl}`);
   }
   if (projectBased && !newConfig.projectId)
     throw new Error("Configuration must contain `projectId`");
-  if (newConfig["~experimental_resource"] && resourceConfig(newConfig), typeof newConfig.perspective < "u" && validateApiPerspective2(newConfig.perspective), "encodeSourceMap" in newConfig)
+  if (resourceConfig$1 && resourceConfig(newConfig), typeof newConfig.perspective < "u" && validateApiPerspective2(newConfig.perspective), "encodeSourceMap" in newConfig)
     throw new Error(
       "It looks like you're using options meant for '@sanity/preview-kit/client'. 'encodeSourceMap' is not supported in '@sanity/client'. Did you mean 'stega.enabled'?"
     );
@@ -1648,7 +1666,7 @@ function _fetch(client, httpRequest, _stega, query, _params = {}, options = {}) 
   return stega.enabled ? $request.pipe(
     combineLatestWith(
       from(
-        import("./stegaEncodeSourceMap-FCOGVRAF.js").then(function(n4) {
+        import("./stegaEncodeSourceMap-FOLZFBGV.js").then(function(n4) {
           return n4.stegaEncodeSourceMap$1;
         }).then(
           ({ stegaEncodeSourceMap }) => stegaEncodeSourceMap
@@ -1845,7 +1863,10 @@ function _create(client, httpRequest, doc, op, options = {}) {
   const mutation = { [op]: doc }, opts = Object.assign({ returnFirst: true, returnDocuments: true }, options);
   return _dataRequest(client, httpRequest, "mutate", { mutations: [mutation] }, opts);
 }
-var hasDataConfig = (client) => client.config().dataset !== void 0 && client.config().projectId !== void 0 || client.config()["~experimental_resource"] !== void 0;
+var hasDataConfig = (client) => {
+  const config = client.config();
+  return config.dataset !== void 0 && config.projectId !== void 0 || config.resource !== void 0;
+};
 var isQuery = (client, uri) => hasDataConfig(client) && uri.startsWith(_getDataUrl(client, "query"));
 var isMutate = (client, uri) => hasDataConfig(client) && uri.startsWith(_getDataUrl(client, "mutate"));
 var isDoc = (client, uri) => hasDataConfig(client) && uri.startsWith(_getDataUrl(client, "doc", ""));
@@ -1883,7 +1904,7 @@ function _request(client, httpRequest, options) {
 }
 function _getDataUrl(client, operation, path) {
   const config = client.config();
-  if (config["~experimental_resource"]) {
+  if (config.resource) {
     resourceConfig(config);
     const resourceBase = resourceDataBase(config), uri2 = path !== void 0 ? `${operation}/${path}` : operation;
     return `${resourceBase}/${uri2}`.replace(/\/($|\?)/, "$1");
@@ -1916,9 +1937,10 @@ function _createAbortError(signal) {
   return error.name = "AbortError", error;
 }
 var resourceDataBase = (config) => {
-  if (!config["~experimental_resource"])
+  const resource = config.resource;
+  if (!resource)
     throw new Error("`resource` must be provided to perform resource queries");
-  const { type, id } = config["~experimental_resource"];
+  const { type, id } = resource;
   switch (type) {
     case "dataset": {
       const segments = id.split(".");
@@ -2079,7 +2101,12 @@ function _upload(client, httpRequest, assetType, body, opts = {}) {
   validateAssetType(assetType);
   let meta = opts.extract || void 0;
   meta && !meta.length && (meta = ["none"]);
-  const config = client.config(), options = optionsFromFile(opts, body), { tag, label, title, description, creditLine, filename, source } = options, query = {
+  const config = client.config(), options = optionsFromFile(opts, body), { tag, label, title, description, creditLine, filename, source } = options, isMediaLibrary = config.resource?.type === "media-library", query = isMediaLibrary ? {
+    // Media Library only supports basic parameters
+    title,
+    filename
+  } : {
+    // Content Lake supports full set of parameters
     label,
     title,
     description,
@@ -2087,7 +2114,7 @@ function _upload(client, httpRequest, assetType, body, opts = {}) {
     meta,
     creditLine
   };
-  return source && (query.sourceId = source.id, query.sourceName = source.name, query.sourceUrl = source.url), _requestObservable(client, httpRequest, {
+  return source && !isMediaLibrary && (query.sourceId = source.id, query.sourceName = source.name, query.sourceUrl = source.url), _requestObservable(client, httpRequest, {
     tag,
     method: "POST",
     timeout: options.timeout || 0,
@@ -2098,9 +2125,9 @@ function _upload(client, httpRequest, assetType, body, opts = {}) {
   });
 }
 function buildAssetUploadUrl(config, assetType) {
-  const assetTypeEndpoint = assetType === "image" ? "images" : "files";
-  if (config["~experimental_resource"]) {
-    const { type, id } = config["~experimental_resource"];
+  const assetTypeEndpoint = assetType === "image" ? "images" : "files", resource = config.resource;
+  if (resource) {
+    const { type, id } = resource;
     switch (type) {
       case "dataset":
         throw new Error(
@@ -2165,11 +2192,9 @@ function _listen(query, params, opts = {}) {
   ), listenFor).pipe(
     reconnectOnConnectionFailure(),
     filter((event) => listenFor.includes(event.type)),
-    map(
-      (event) => __spreadValues({
-        type: event.type
-      }, "data" in event ? event.data : {})
-    )
+    map((event) => __spreadValues({
+      type: event.type
+    }, "data" in event ? event.data : {}))
   );
 }
 function shareReplayLatest(configOrPredicate, config) {
@@ -2210,7 +2235,6 @@ var LiveClient = class {
     includeDrafts = false,
     tag: _tag
   } = {}) {
-    resourceGuard("live", this.#client.config());
     const {
       projectId: projectId2,
       apiVersion: _apiVersion,
@@ -2404,7 +2428,7 @@ var ObservableMediaLibraryVideoClient = class {
    * @param options - Options for transformations and expiration
    */
   getPlaybackInfo(assetIdentifier, options = {}) {
-    const configMediaLibraryId = this.#client.config()["~experimental_resource"]?.id, { instanceId, libraryId } = parseAssetInstanceId(assetIdentifier), effectiveLibraryId = libraryId || configMediaLibraryId;
+    const config = this.#client.config(), configMediaLibraryId = (config.resource || config["~experimental_resource"])?.id, { instanceId, libraryId } = parseAssetInstanceId(assetIdentifier), effectiveLibraryId = libraryId || configMediaLibraryId;
     if (!effectiveLibraryId)
       throw new Error(
         "Could not determine Media Library ID - you need to provide a valid Media Library ID in the client config or a Media Library GDR"

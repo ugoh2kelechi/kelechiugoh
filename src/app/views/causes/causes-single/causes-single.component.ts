@@ -24,6 +24,7 @@ interface CauseDetailView {
 })
 export class CausesSingleComponent implements OnInit {
   cause: CauseDetailView | null = null;
+  causeSlug = "";
   isLoading = true;
   errorMessage = "";
   private destroyRef = inject(DestroyRef);
@@ -57,6 +58,7 @@ export class CausesSingleComponent implements OnInit {
       const query = slug
         ? `*[_type == "cause" && (slug.current == $slug || _id == $slug)][0]{
             title,
+            slug,
             description,
             category,
             status,
@@ -70,6 +72,7 @@ export class CausesSingleComponent implements OnInit {
           }`
         : `*[_type == "cause"]|order(_createdAt desc)[0]{
             title,
+            slug,
             description,
             category,
             status,
@@ -113,6 +116,7 @@ export class CausesSingleComponent implements OnInit {
             ? Math.min(100, Math.round((resolvedRaised / resolvedGoal) * 100))
             : 0;
 
+      this.causeSlug = result.slug?.current ?? result._id ?? slug ?? "";
       this.cause = {
         title: result.title || "",
         description: result.description || "",

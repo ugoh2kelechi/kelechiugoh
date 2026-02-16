@@ -8,61 +8,58 @@
       </div>
     </div>
     <div class="row">
-      @for (blog of blogs | slice: 0 : 3; track $index) {
+      @for (cause of causes | slice: 0 : 6; track $index) {
         <div class="col-lg-4 col-md-6">
-          <div class="vl-single-blg-item mb-30">
-            <div class="vl-blg-thumb">
-              <a [routerLink]="['/blog-details', blog.slug || blog.id]">
-                <img
-                  class="w-100"
-                  [ngSrc]="blog.image || 'assets/img/blog/vl-blg-1.1.png'"
-                  width="600"
-                  height="400"
-                  [alt]="blog.title"
-                />
-              </a>
+          <div class="vl-single-cause-box gray-bg mb-30">
+            <div class="vl-cause-thumb">
+              <img
+                class="w-100"
+                [ngSrc]="cause.image || 'assets/img/cause/vl-cause-1.1.png'"
+                width="600"
+                height="400"
+                [alt]="cause.title"
+              />
+              <div class="btn-area casue-btn text-center">
+                <a
+                  [routerLink]="['/cause-details', cause.slug || cause.id]"
+                  class="header-btn1"
+                  >Donation <span><i class="fa-solid fa-arrow-right"></i></span
+                ></a>
+              </div>
             </div>
-            <div class="vl-meta">
-              <ul>
-                <li>
-                  <a href="javascript:void(0);"
-                    ><span class="top-minus">
-                      <img
-                        ngSrc="assets/img/icons/vl-calender-1.1.svg"
-                        width="16"
-                        height="16"
-                        alt="Calendar"
-                    /></span>
-                    {{ blog.date }}</a
-                  >
-                </li>
-                <li>
-                  <a href="javascript:void(0);"
-                    ><span class="top-minus">
-                      <img
-                        ngSrc="assets/img/icons/vl-user-1.1.svg"
-                        width="16"
-                        height="16"
-                        alt="Author"
-                    /></span>
-                    {{ blog.author }}</a
-                  >
-                </li>
-              </ul>
-            </div>
-            <div class="vl-blg-content">
+
+            <div class="vl-cause-content">
+              <div class="vl-progress">
+                <div class="skill-progress">
+                  <div class="skill-box">
+                    <div class="skill-bar">
+                      <span
+                        class="skill-per html"
+                        [ngStyle]="{ width: (cause.progress || 0) + '%' }"
+                      >
+                        <span class="tooltipp">{{ cause.progress || 0 }}%</span>
+                      </span>
+                    </div>
+                    <div class="skill-vlue">
+                      <div class="num1">
+                        <span>Raised: </span>${{ cause.raised || 0 }}
+                      </div>
+                      <div class="num1">
+                        <span>Goal: </span>${{ cause.goal || 0 }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a href="javascript:void(0);" class="badge mt-32">{{
+                cause.category
+              }}</a>
               <h3 class="title">
-                <a [routerLink]="['/blog-details', blog.slug || blog.id]">{{
-                  blog.title
+                <a [routerLink]="['/cause-details', cause.slug || cause.id]">{{
+                  cause.title
                 }}</a>
               </h3>
-              <p>{{ blog.description }}</p>
-              <a
-                [routerLink]="['/blog-details', blog.slug || blog.id]"
-                class="read-more"
-              >
-                Read More <span><i class="fa-solid fa-arrow-right"></i></span>
-              </a>
+              <p>{{ cause.description }}</p>
             </div>
           </div>
         </div>

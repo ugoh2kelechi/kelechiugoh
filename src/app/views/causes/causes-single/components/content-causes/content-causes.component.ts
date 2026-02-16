@@ -2,7 +2,6 @@ import { CommonModule, NgOptimizedImage } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { RouterLink } from "@angular/router";
 import { SanityService } from "../../../../../service/sanity.service";
-import { LatestCauseLinkService } from "../../../../../service/latest-cause-link.service";
 
 interface CauseSummaryView {
   id?: string;
@@ -24,15 +23,10 @@ interface CauseSummaryView {
 })
 export class ContentCausesComponent implements OnInit {
   causes: CauseSummaryView[] = [];
-  donateLink = "/cause-details";
 
-  constructor(
-    private sanity: SanityService,
-    private latestCauseLink: LatestCauseLinkService,
-  ) {}
+  constructor(private sanity: SanityService) {}
 
   async ngOnInit(): Promise<void> {
-    this.donateLink = await this.latestCauseLink.getLatestCauseLink();
     if (!this.sanity.isConfigured()) {
       this.causes = [];
       return;
