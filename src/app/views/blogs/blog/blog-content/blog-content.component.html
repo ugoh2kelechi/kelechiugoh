@@ -63,10 +63,15 @@
               </div>
               <div class="vl-blg-content">
                 <h3 class="title">
-                  <a [routerLink]="['/blog-single']">{{ blog.title }}</a>
+                  <a [routerLink]="['/blog-details', blog.slug || blog.id]">{{
+                    blog.title
+                  }}</a>
                 </h3>
                 <p>{{ blog.description }}</p>
-                <a [routerLink]="['/blog-single']" class="read-more">
+                <a
+                  [routerLink]="['/blog-details', blog.slug || blog.id]"
+                  class="read-more"
+                >
                   Read More <span><i class="fa-solid fa-arrow-right"></i></span>
                 </a>
               </div>

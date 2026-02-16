@@ -1,5 +1,5 @@
 import { CommonModule, NgOptimizedImage } from "@angular/common";
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { RouterLink } from "@angular/router";
 import {
   DEFAULT_DONATION_AMOUNT,
@@ -13,6 +13,17 @@ import {
   styleUrls: ["./sidebar-cause.component.scss"],
 })
 export class SidebarCauseComponent {
+  @Input() cause: {
+    title: string;
+    description: string;
+    category: string;
+    raised: number;
+    goal: number;
+    progress: number;
+    image: string;
+  } | null = null;
+  @Input() isLoading = false;
+  @Input() errorMessage = "";
   amounts = DONATION_AMOUNTS;
   selectedAmount: number = DEFAULT_DONATION_AMOUNT;
 

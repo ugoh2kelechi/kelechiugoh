@@ -1,4 +1,5 @@
 export interface CauseItem {
+  slug?: string;
   title: string;
   image: string;
   donationLink: string;

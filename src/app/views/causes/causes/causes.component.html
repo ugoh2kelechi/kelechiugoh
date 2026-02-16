@@ -71,7 +71,9 @@
                   cause.category
                 }}</a>
                 <h3 class="title">
-                  <a [routerLink]="cause.donationLink">{{ cause.title }}</a>
+                  <a [routerLink]="['/cause-details', cause.slug]">{{
+                    cause.title
+                  }}</a>
                 </h3>
                 <p>{{ cause.description }}</p>
               </div>

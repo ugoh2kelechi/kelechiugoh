@@ -1,5 +1,5 @@
 import { CommonModule, NgOptimizedImage } from "@angular/common";
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { RouterLink } from "@angular/router";
 import {
   DEFAULT_DONATION_AMOUNT,
@@ -13,6 +13,16 @@ import {
   styleUrls: ["./event-sidebar-area.component.scss"],
 })
 export class EventSidebarAreaComponent {
+  @Input() event: {
+    title: string;
+    description: string;
+    dateLabel: string;
+    timeLabel: string;
+    location: string;
+    image: string;
+  } | null = null;
+  @Input() isLoading = false;
+  @Input() errorMessage = "";
   amounts = DONATION_AMOUNTS;
   selectedAmount: number = DEFAULT_DONATION_AMOUNT;
 

@@ -23,7 +23,7 @@ export const menuItems = [
       { title: "Events", link: "/event" },
       { title: "Events Left", link: "/event-left" },
       { title: "Events Right", link: "/event-right" },
-      { title: "Events Single", link: "/event-single" },
+      { title: "Event Details", link: "/event" },
     ],
   },
   {
@@ -34,7 +34,7 @@ export const menuItems = [
       { title: "Blog", link: "/blog" },
       { title: "Blog Left", link: "/blog-left" },
       { title: "Blog Right", link: "/blog-right" },
-      { title: "Blog Single", link: "/blog-single" },
+      { title: "Blog Details", link: "/blog" },
     ],
   },
   {
@@ -57,7 +57,7 @@ export const menuItems = [
       { title: "Causes", link: "/causes" },
       { title: "Causes Left", link: "/causes-left" },
       { title: "Causes Right", link: "/causes-right" },
-      { title: "Causes Single", link: "/causes-single" },
+      { title: "Cause Details", link: "/causes" },
     ],
   },
 ];

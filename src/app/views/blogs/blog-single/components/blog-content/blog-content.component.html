@@ -12,10 +12,10 @@
         <div class="col-lg-4 col-md-6">
           <div class="vl-single-blg-item mb-30">
             <div class="vl-blg-thumb">
-              <a [routerLink]="['/blog']">
+              <a [routerLink]="['/blog-details', blog.slug || blog.id]">
                 <img
                   class="w-100"
-                  [ngSrc]="blog.image"
+                  [ngSrc]="blog.image || 'assets/img/blog/vl-blg-1.1.png'"
                   width="600"
                   height="400"
                   [alt]="blog.title"
@@ -52,10 +52,15 @@
             </div>
             <div class="vl-blg-content">
               <h3 class="title">
-                <a [routerLink]="['/blog-single']">{{ blog.title }}</a>
+                <a [routerLink]="['/blog-details', blog.slug || blog.id]">{{
+                  blog.title
+                }}</a>
               </h3>
               <p>{{ blog.description }}</p>
-              <a [routerLink]="['/blog-single']" class="read-more">
+              <a
+                [routerLink]="['/blog-details', blog.slug || blog.id]"
+                class="read-more"
+              >
                 Read More <span><i class="fa-solid fa-arrow-right"></i></span>
               </a>
             </div>

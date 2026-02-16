@@ -38,6 +38,7 @@ export class EventAreaComponent implements OnInit {
         const fallbackImage = "assets/img/event/vl-event-thumb-1.1.png";
 
         this.eventAreaData = (results || []).map((r: any) => {
+          const slug = r.slug?.current ?? r._id;
           const dateValue = r.eventDate ? new Date(r.eventDate) : null;
           const day = dateValue
             ? String(dateValue.getDate()).padStart(2, "0")
@@ -56,7 +57,7 @@ export class EventAreaComponent implements OnInit {
             eventTitle: r.title || "",
             eventTime: r.eventTime || r.description || "",
             location: r.location || "",
-            detailsUrl: r.detailsUrl || "/event-single",
+            detailsUrl: slug ? `/event-details/${slug}` : "/event-single",
             image: this.sanity.imageUrl(r.featuredImage) || fallbackImage,
           } as EventItem;
         });

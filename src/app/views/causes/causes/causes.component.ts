@@ -60,6 +60,7 @@ export class CausesComponent implements OnInit {
                 : 0;
 
           return {
+            slug: r.slug?.current ?? r._id,
             title: r.title || "",
             image: imageUrl,
             donationLink: r.donationLink || "/donation",

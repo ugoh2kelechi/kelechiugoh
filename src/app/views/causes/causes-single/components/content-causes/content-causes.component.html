@@ -8,143 +8,60 @@
       </div>
     </div>
     <div class="row">
-      <!-- single cause box -->
-      <div class="col-lg-4 col-md-6">
-        <div class="vl-single-cause-box gray-bg mb-30">
-          <div class="vl-cause-thumb">
-            <img
-              class="w-100"
-              ngSrc="assets/img/cause/vl-cause-1.1.png"
-              width="600"
-              height="400"
-              alt="Cause"
-            />
-            <div class="btn-area casue-btn text-center">
-              <a routerLink="/donation" class="header-btn1"
-                >Donation <span><i class="fa-solid fa-arrow-right"></i></span
-              ></a>
+      @for (cause of causes | slice: 0 : 3; track $index) {
+        <div class="col-lg-4 col-md-6">
+          <div class="vl-single-cause-box gray-bg mb-30">
+            <div class="vl-cause-thumb">
+              <img
+                class="w-100"
+                [ngSrc]="cause.image || 'assets/img/cause/vl-cause-1.1.png'"
+                width="600"
+                height="400"
+                [alt]="cause.title"
+              />
+              <div class="btn-area casue-btn text-center">
+                <a routerLink="/donation" class="header-btn1"
+                  >Donation <span><i class="fa-solid fa-arrow-right"></i></span
+                ></a>
+              </div>
             </div>
-          </div>
 
-          <div class="vl-cause-content">
-            <div class="vl-progress">
-              <div class="skill-progress">
-                <div class="skill-box">
-                  <div class="skill-bar">
-                    <span class="skill-per html">
-                      <span class="tooltipp">16%</span>
-                    </span>
-                  </div>
-                  <div class="skill-vlue">
-                    <div class="num1"><span>Raised: </span>$13,000</div>
-                    <div class="num1"><span>Goal: </span>$85,000</div>
+            <div class="vl-cause-content">
+              <div class="vl-progress">
+                <div class="skill-progress">
+                  <div class="skill-box">
+                    <div class="skill-bar">
+                      <span
+                        class="skill-per html"
+                        [ngStyle]="{ width: (cause.progress || 0) + '%' }"
+                      >
+                        <span class="tooltipp">{{ cause.progress || 0 }}%</span>
+                      </span>
+                    </div>
+                    <div class="skill-vlue">
+                      <div class="num1">
+                        <span>Raised: </span>${{ cause.raised || 0 }}
+                      </div>
+                      <div class="num1">
+                        <span>Goal: </span>${{ cause.goal || 0 }}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
+              <a href="javascript:void(0);" class="badge mt-32">{{
+                cause.category
+              }}</a>
+              <h3 class="title">
+                <a [routerLink]="['/cause-details', cause.slug || cause.id]">{{
+                  cause.title
+                }}</a>
+              </h3>
+              <p>{{ cause.description }}</p>
             </div>
-            <a href="javascript:void(0);" class="badge mt-32">Disasters</a>
-            <h3 class="title">
-              <a routerLink="/cause-single">Medical And Assistance</a>
-            </h3>
-            <p>
-              Access healthcare becomes a lifeline in times of crisis we offer
-              medical.
-            </p>
           </div>
         </div>
-      </div>
-
-      <!-- single cause box -->
-      <div class="col-lg-4 col-md-6">
-        <div class="vl-single-cause-box gray-bg mb-30">
-          <div class="vl-cause-thumb">
-            <img
-              class="w-100"
-              ngSrc="assets/img/cause/vl-cause-1.2.png"
-              width="600"
-              height="400"
-              alt="Cause"
-            />
-            <div class="btn-area casue-btn text-center">
-              <a routerLink="/donation" class="header-btn1"
-                >Donation <span><i class="fa-solid fa-arrow-right"></i></span
-              ></a>
-            </div>
-          </div>
-
-          <div class="vl-cause-content">
-            <div class="vl-progress">
-              <div class="skill-progress">
-                <div class="skill-box">
-                  <div class="skill-bar">
-                    <span class="skill-per html">
-                      <span class="tooltipp">16%</span>
-                    </span>
-                  </div>
-                  <div class="skill-vlue">
-                    <div class="num1"><span>Raised: </span>$26,000</div>
-                    <div class="num1"><span>Goal: </span>$90,000</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <a href="javascript:void(0);" class="badge mt-32">Disasters</a>
-            <h3 class="title">
-              <a routerLink="/cause-single">Hunger Relief and Food</a>
-            </h3>
-            <p>
-              In the aftermath of a disaster access to nutritious food is often
-              disrupted.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- single cause box -->
-      <div class="col-lg-4 col-md-6">
-        <div class="vl-single-cause-box gray-bg mb-30">
-          <div class="vl-cause-thumb">
-            <img
-              class="w-100"
-              ngSrc="assets/img/cause/vl-cause-1.3.png"
-              width="600"
-              height="400"
-              alt="Cause"
-            />
-            <div class="btn-area casue-btn text-center">
-              <a routerLink="/donation" class="header-btn1"
-                >Donation <span><i class="fa-solid fa-arrow-right"></i></span
-              ></a>
-            </div>
-          </div>
-
-          <div class="vl-cause-content">
-            <div class="vl-progress">
-              <div class="skill-progress">
-                <div class="skill-box">
-                  <div class="skill-bar">
-                    <span class="skill-per html">
-                      <span class="tooltipp">24%</span>
-                    </span>
-                  </div>
-                  <div class="skill-vlue">
-                    <div class="num1"><span>Raised: </span>$13,701</div>
-                    <div class="num1"><span>Goal: </span>$60,000</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <a href="javascript:void(0);" class="badge mt-32">Disasters</a>
-            <h3 class="title">
-              <a routerLink="/cause-single">Shelter and Housing</a>
-            </h3>
-            <p>
-              Rebuilding home & shelter essential for recovery we help restore
-              safe.
-            </p>
-          </div>
-        </div>
-      </div>
+      }
     </div>
   </div>
 </section>

@@ -36,10 +36,18 @@ export const VIEWS_ROUTE: Route[] = [
     },
   },
   {
+    path: "blog-details/:slug",
+    component: BlogSingleComponent,
+    data: {
+      title: "Blog Details | Kelechi K. Ugoh",
+      description: "Read the full story and key takeaways.",
+    },
+  },
+  {
     path: "blog-single",
     component: BlogSingleComponent,
     data: {
-      title: "Blog Post | Kelechi K. Ugoh",
+      title: "Blog Details | Kelechi K. Ugoh",
       description: "Read the full story and key takeaways.",
     },
   },
@@ -49,6 +57,22 @@ export const VIEWS_ROUTE: Route[] = [
     data: {
       title: "Causes | Kelechi K. Ugoh",
       description: "Explore the causes we support and how you can help.",
+    },
+  },
+  {
+    path: "cause-details/:slug",
+    component: CausesSingleComponent,
+    data: {
+      title: "Cause Details | Kelechi K. Ugoh",
+      description: "Learn more about this cause and its impact.",
+    },
+  },
+  {
+    path: "cause-details",
+    component: CausesSingleComponent,
+    data: {
+      title: "Cause Details | Kelechi K. Ugoh",
+      description: "Learn more about this cause and its impact.",
     },
   },
   {
@@ -65,6 +89,22 @@ export const VIEWS_ROUTE: Route[] = [
     data: {
       title: "Events | Kelechi K. Ugoh",
       description: "Upcoming events and community initiatives.",
+    },
+  },
+  {
+    path: "event-details/:slug",
+    component: EventsSingleComponent,
+    data: {
+      title: "Event Details | Kelechi K. Ugoh",
+      description: "Event information, schedules, and participation details.",
+    },
+  },
+  {
+    path: "event-details",
+    component: EventsSingleComponent,
+    data: {
+      title: "Event Details | Kelechi K. Ugoh",
+      description: "Event information, schedules, and participation details.",
     },
   },
   {
