@@ -10,6 +10,7 @@ app.use(express.json({ limit: "2mb" }));
 const sanityPayloadSchema = z
   .object({
     _type: z.string(),
+    _id: z.string().optional(),
     title: z.string().optional(),
     slug: z.object({ current: z.string() }).optional(),
     excerpt: z.string().optional(),
@@ -43,6 +44,9 @@ app.post("/webhooks/sanity", async (req, res) => {
   }
 
   try {
+    if (parsed.data._id?.startsWith("drafts.")) {
+      return res.json({ ok: true, skipped: "draft" });
+    }
     await publishToAll(parsed.data);
     return res.json({ ok: true });
   } catch (error) {
