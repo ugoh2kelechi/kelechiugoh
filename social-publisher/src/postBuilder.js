@@ -6,6 +6,10 @@ export function buildPost(doc) {
     doc?.mainImageUrl ||
     doc?.featuredImageUrl ||
     doc?.coverImageUrl ||
+    doc?.featuredImage?.asset?.url ||
+    doc?.mainImage?.asset?.url ||
+    doc?.coverImage?.asset?.url ||
+    (Array.isArray(doc?.gallery) ? doc.gallery[0]?.asset?.url : "") ||
     "";
 
   let path = "";

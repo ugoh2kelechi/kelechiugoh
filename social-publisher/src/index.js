@@ -7,20 +7,26 @@ const app = express();
 
 app.use(express.json({ limit: "2mb" }));
 
-const sanityPayloadSchema = z.object({
-  _type: z.string(),
-  title: z.string().optional(),
-  slug: z.object({ current: z.string() }).optional(),
-  excerpt: z.string().optional(),
-  description: z.string().optional(),
-  publishedAt: z.string().optional(),
-  eventDate: z.string().optional(),
-  eventTime: z.string().optional(),
-  imageUrl: z.string().url().optional(),
-  mainImageUrl: z.string().url().optional(),
-  featuredImageUrl: z.string().url().optional(),
-  coverImageUrl: z.string().url().optional(),
-});
+const sanityPayloadSchema = z
+  .object({
+    _type: z.string(),
+    title: z.string().optional(),
+    slug: z.object({ current: z.string() }).optional(),
+    excerpt: z.string().optional(),
+    description: z.string().optional(),
+    publishedAt: z.string().optional(),
+    eventDate: z.string().optional(),
+    eventTime: z.string().optional(),
+    imageUrl: z.string().url().optional(),
+    mainImageUrl: z.string().url().optional(),
+    featuredImageUrl: z.string().url().optional(),
+    coverImageUrl: z.string().url().optional(),
+    featuredImage: z.any().optional(),
+    mainImage: z.any().optional(),
+    coverImage: z.any().optional(),
+    gallery: z.any().optional(),
+  })
+  .passthrough();
 
 app.post("/webhooks/sanity", async (req, res) => {
   const secret = process.env.WEBHOOK_SECRET;
