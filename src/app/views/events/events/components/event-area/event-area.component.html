@@ -1,0 +1,106 @@
+<section class="vl-singlevent-iner sp1">
+  <div class="container">
+    @if (isLoading) {
+      <div class="row">
+        <div class="col-12">
+          <div class="d-flex align-items-center justify-content-center py-5">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    } @else if (errorMessage) {
+      <div class="row">
+        <div class="col-12">
+          <p class="text-center py-5">{{ errorMessage }}</p>
+        </div>
+      </div>
+    } @else {
+      <div class="row">
+        @for (item of pagedEvents; track $index) {
+          <!-- single event item -->
+          <div class="col-lg-12 mb-50">
+            <div
+              class="event-bg-flex"
+              [ngClass]="{ active: hoverIndex === $index }"
+              (mouseenter)="hoverIndex = $index"
+              (mouseleave)="hoverIndex = 0"
+            >
+              <div class="event-date">
+                <h3 class="title">{{ item.date }}</h3>
+                <p class="year">
+                  {{ item.month }} <br />
+                  {{ item.year }}
+                </p>
+              </div>
+              <div class="event-content">
+                <div class="event-meta">
+                  <p class="para">{{ item.eventTime }}</p>
+                </div>
+                <a [routerLink]="item.detailsUrl" class="title">{{
+                  item.eventTitle
+                }}</a>
+                <p class="para">
+                  {{ item.location }} <br />
+                  CA 93722, Fresno CA, CA, United States
+                </p>
+                <a [routerLink]="item.detailsUrl" class="details"
+                  >Event Details
+                  <span><i class="fa-solid fa-arrow-right"></i></span
+                ></a>
+              </div>
+              <div class="event-thumb">
+                <img
+                  class="w-100"
+                  [ngSrc]="item.image"
+                  width="600"
+                  height="400"
+                  [alt]="item.eventTitle"
+                />
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- pagination -->
+      @if (totalPages > 1) {
+        <div class="row">
+          <div class="col-12 m-auto">
+            <div class="theme-pagination thme-pagination-mt text-center mt-18">
+              <ul>
+                <li [class.disabled]="currentPage === 1">
+                  <a
+                    href="javascript:void(0);"
+                    (click)="goToPage(currentPage - 1)"
+                  >
+                    <i class="fa-solid fa-angle-left"></i>
+                  </a>
+                </li>
+                @for (page of pages; track page) {
+                  <li>
+                    <a
+                      href="javascript:void(0);"
+                      [class.active]="page === currentPage"
+                      (click)="goToPage(page)"
+                      >{{ page }}</a
+                    >
+                  </li>
+                }
+                <li [class.disabled]="currentPage === totalPages">
+                  <a
+                    href="javascript:void(0);"
+                    (click)="goToPage(currentPage + 1)"
+                  >
+                    <i class="fa-solid fa-angle-right"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      }
+    }
+  </div>
+</section>

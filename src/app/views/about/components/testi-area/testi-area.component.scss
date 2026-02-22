@@ -1,0 +1,16 @@
+.testimonial-placeholder {
+	min-height: 420px;
+	background: linear-gradient(90deg, #f3f4f6 25%, #e9ecef 37%, #f3f4f6 63%);
+	background-size: 400% 100%;
+	animation: shimmer 1.2s ease-in-out infinite;
+	border-radius: 8px;
+}
+
+@keyframes shimmer {
+	0% {
+		background-position: 100% 0;
+	}
+	100% {
+		background-position: 0 0;
+	}
+}

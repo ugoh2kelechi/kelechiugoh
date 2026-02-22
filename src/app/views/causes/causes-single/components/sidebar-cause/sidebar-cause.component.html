@@ -1,0 +1,162 @@
+<div class="vl-sidebar-area sp2">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="vl-event-content-area ml-50">
+          @if (isLoading) {
+            <div class="d-flex align-items-center justify-content-center py-5">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          } @else if (errorMessage) {
+            <p class="text-center py-5">{{ errorMessage }}</p>
+          } @else {
+            <div class="vl-large-thumb">
+              <img
+                class="w-100"
+                [ngSrc]="
+                  cause?.image || 'assets/img/cause/vl-cause-learge-thumb.png'
+                "
+                width="800"
+                height="500"
+                [alt]="cause?.title || 'Cause'"
+              />
+            </div>
+
+            <div class="vl-event-box-bg cause-box-bg">
+              <div class="row">
+                <div class="skill-progress">
+                  <div class="skill-box">
+                    <div class="skill-bar">
+                      <span
+                        class="skill-per html"
+                        [ngStyle]="{ width: (cause?.progress || 0) + '%' }"
+                      >
+                        <span class="tooltipp"
+                          >{{ cause?.progress || 0 }}%</span
+                        >
+                      </span>
+                    </div>
+                    <div class="skill-vlue">
+                      <div class="num1">
+                        <span>Goal: </span>${{ cause?.goal || 0 }}
+                      </div>
+                      <div class="num1">
+                        <span>Raised: </span>${{ cause?.raised || 0 }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="display-amount" id="displayAmount">
+                  {{ selectedAmount | currency }}
+                </div>
+
+                <div class="amount-selector">
+                  @for (amt of amounts; track $index) {
+                    <button
+                      class="button selected"
+                      (click)="selectAmount(amt)"
+                      [class.selected]="amt === selectedAmount"
+                    >
+                      <span
+                        ><img
+                          ngSrc="assets/img/icons/dollar.svg"
+                          width="14"
+                          height="14"
+                          alt="Dollar" /></span
+                      >{{ amt }}
+                    </button>
+                  }
+                  <div class="custom-button">
+                    Custom Amount
+                    <span
+                      ><img
+                        ngSrc="assets/img/icons/custom-amou.svg"
+                        width="14"
+                        height="14"
+                        alt="Custom"
+                    /></span>
+                  </div>
+                </div>
+
+                <!-- select method -->
+                <div class="space-div">
+                  <div class="select-method">
+                    <h4 class="title pb-32">Select Payment Method</h4>
+
+                    <!-- btn -->
+                    <div class="select-meth">
+                      <div class="online">
+                        <input
+                          type="radio"
+                          id="Online"
+                          name="fav_language"
+                          value="Online"
+                        />
+                        <label for="Online">Online Donation</label><br />
+                      </div>
+
+                      <div class="ofline">
+                        <input
+                          type="radio"
+                          id="Offline"
+                          name="fav_language"
+                          value="Offline"
+                        />
+                        <label for="Offline">Offline Donation</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- input field -->
+                <div class="donate-form">
+                  <form action="#">
+                    <div class="row">
+                      <div class="col-lg-4 col-md-6 mb-20">
+                        <input type="text" placeholder="First Name" />
+                      </div>
+                      <div class="col-lg-4 col-md-6 mb-20">
+                        <input type="text" placeholder="Last Name" />
+                      </div>
+                      <div class="col-lg-4 col-md-6 mb-20">
+                        <input type="email" placeholder="Email Address" />
+                      </div>
+                    </div>
+                  </form>
+                  <div class="total-anoumt">
+                    <div class="toal">
+                      <div class="btn-area">
+                        <a [routerLink]="donateLink" class="header-btn1">
+                          Donate
+                          <span><i class="fa-solid fa-arrow-right"></i></span>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="content">
+                      <h2 class="title">
+                        Donation Total: {{ selectedAmount | currency }}
+                      </h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="event-content-area">
+              <h2 class="title">{{ cause?.title }}</h2>
+              <p class="para">
+                {{ cause?.description }}
+              </p>
+              @if (cause?.category) {
+                <p class="para">Category: {{ cause?.category }}</p>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

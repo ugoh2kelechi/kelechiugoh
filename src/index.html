@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Kelechi K. Ugoh || Philanthropist</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Sanity runtime configuration (leave token empty in source; set via env or server-side injection) -->
+    <meta name="sanity-project-id" content="ofk5anw5" />
+    <meta name="sanity-dataset" content="development" />
+    <meta name="sanity-api-version" content="2025-01-01" />
+    <meta name="sanity-use-cdn" content="true" />
+    <meta name="sanity-perspective" content="published" />
+    <!-- If you must use a token in development, add a meta tag with name="sanity-token" on your local copy only (do NOT commit secrets) -->
+    <link
+      rel="shortcut icon"
+      href="assets/img/logo/favicon.ico"
+      type="image/x-icon"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/img/logo/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/img/logo/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/img/logo/favicon-16x16.png"
+    />
+
+    <link rel="manifest" href="assets/img/logo/kelechiugoh.webmanifest" />
+
+    <script>
+      (function () {
+        try {
+          const meta = (name) => {
+            const m = document.querySelector('meta[name="' + name + '"]');
+            return m ? m.getAttribute("content") : null;
+          };
+
+          const projectId = meta("sanity-project-id");
+          if (!projectId) return;
+
+          const cfg = {
+            projectId,
+            dataset: meta("sanity-dataset") || "development",
+            apiVersion: meta("sanity-api-version") || "2025-01-01",
+            useCdn: (meta("sanity-use-cdn") || "true") === "true",
+            perspective: meta("sanity-perspective") || "published",
+          };
+
+          const token = meta("sanity-token");
+          if (token) cfg.token = token;
+
+          window.__sanity = cfg;
+        } catch (e) {
+          /* ignore */
+        }
+      })();
+    </script>
+  </head>
+
+  <body class="homepage1-body">
+    <app-root></app-root>
+  </body>
+</html>
