@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BlogContentComponent } from './blog-content.component';
@@ -21,3 +22,28 @@ describe('BlogContentComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+=======
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { BlogContentComponent } from './blog-content.component';
+
+describe('BlogContentComponent', () => {
+  let component: BlogContentComponent;
+  let fixture: ComponentFixture<BlogContentComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [BlogContentComponent]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(BlogContentComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
+>>>>>>> 3460d3272a206d44f28fcf2012211c5cd6093c76

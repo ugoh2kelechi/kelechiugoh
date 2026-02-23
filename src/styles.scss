@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import "../node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css";
 
 @import "aos/dist/aos.css";
@@ -32,4 +33,40 @@
 
 // #fbd459
 //  Dandelion
+=======
+@import "../node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css";
+
+@import "aos/dist/aos.css";
+@import "glightbox/dist/css/glightbox.min.css";
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "../public/assets/scss/main.scss";
+
+// Disable AOS/GSAP reveal hiding to keep content visible
+[data-aos],
+.aos-init,
+.aos-animate {
+	opacity: 1 !important;
+	visibility: visible !important;
+	transform: none !important;
+	transition: none !important;
+}
+
+.reveal {
+	visibility: visible !important;
+}
+
+// purple - #59076e
+// .container {
+//     background-color: #59076e !important;
+// }
+
+// #6cdae7
+//  Turquoise Blue
+// background-color: #6cdae7 !important;
+// fade color #f0fbfd
+
+
+// #fbd459
+//  Dandelion
+>>>>>>> 3460d3272a206d44f28fcf2012211c5cd6093c76
 // Buttons color 

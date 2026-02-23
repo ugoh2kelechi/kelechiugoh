@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div
   class="mobile-sidebar mobile-sidebar1"
   [ngClass]="{ 'mobile-menu-active': isMenuOpen }"
@@ -78,3 +79,85 @@
     </div>
   </div>
 </div>
+=======
+<div
+  class="mobile-sidebar mobile-sidebar1"
+  [ngClass]="{ 'mobile-menu-active': isMenuOpen }"
+>
+  <div class="logosicon-area">
+    <div class="logos">
+      <img src="assets/img/logo/kku-logo.png" alt="Logo" />
+    </div>
+    <div class="menu-close" (click)="closeSidebar()">
+      <i class="fa-solid fa-xmark"></i>
+    </div>
+  </div>
+
+  <div class="mobile-nav mobile-nav1">
+    <ul class="mobile-nav-list nav-list1">
+      @for (item of menuItems; track $index) {
+        <li [ngClass]="{ 'has-sub hash-has-sub': item.isOpen }">
+          @if (item.subMenu?.length) {
+            <a
+              href="javascript:void(0);"
+              (click)="toggleSubMenu(item)"
+              [class.hash-nav]="item.link === '#'"
+            >
+              {{ item.title }}
+            </a>
+            <span
+              class="submenu-button"
+              [ngClass]="{ 'submenu-opened': item.isOpen }"
+              (click)="toggleSubMenu(item, $event)"
+            >
+              <em></em>
+            </span>
+          } @else {
+            <a [routerLink]="item.link" (click)="closeSidebar()">
+              {{ item.title }}
+            </a>
+          }
+          @if (item.subMenu && item.isOpen) {
+            <ul
+              class="sub-menu"
+              [ngClass]="{ 'open-sub': item.isOpen }"
+              [ngStyle]="{ display: item.isOpen ? 'block' : 'none' }"
+            >
+              @for (subItem of item.subMenu; track $index) {
+                <li>
+                  <a [routerLink]="subItem.link" (click)="closeSidebar()">{{
+                    subItem.title
+                  }}</a>
+                </li>
+              }
+            </ul>
+          }
+        </li>
+      }
+    </ul>
+  </div>
+
+  <div class="allmobilesection">
+    <a
+      [routerLink]="donateLink"
+      class="header-mobile-btn1"
+      (click)="closeSidebar()"
+      >Donate <span><i class="fa-solid fa-arrow-right"></i></span
+    ></a>
+
+    <div class="vl-mobile-contact1">
+      <h3 class="title">Contact Info</h3>
+      <div class="footer1-contact-info">
+        <div class="contact-info-single">
+          <div class="contact-info-icon">
+            <i class="fa-solid fa-phone-volume"></i>
+          </div>
+          <div class="contact-info-text">
+            <a href="tel:+1(267)3677154">+1(267)367-7154</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+>>>>>>> 3460d3272a206d44f28fcf2012211c5cd6093c76

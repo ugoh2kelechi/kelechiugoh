@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- sidebar area start -->
 <div class="vl-sidebar-area sp2">
   <div class="container">
@@ -133,3 +134,140 @@
     </div>
   </div>
 </div>
+=======
+<!-- sidebar area start -->
+<div class="vl-sidebar-area sp2">
+  <div class="container">
+    <div class="col-lg-8 mx-auto">
+      <div class="vl-event-content-area ml-50">
+        @if (isLoading) {
+          <div class="d-flex align-items-center justify-content-center py-5">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        } @else if (errorMessage) {
+          <p class="text-center py-5">{{ errorMessage }}</p>
+        } @else {
+          <div class="vl-large-thumb">
+            <img
+              class="w-100"
+              [ngSrc]="
+                blog?.image || 'assets/img/blog/vl-blog-large-thumb-1.1.png'
+              "
+              width="800"
+              height="500"
+              [alt]="blog?.title || 'Blog'"
+            />
+          </div>
+
+          <div class="vl-blog-meta-box mt-32">
+            <ul>
+              <li>
+                <a href="javascript:void(0);">
+                  <span
+                    ><img
+                      ngSrc="assets/img/blog/vl-blog-auth-thumb-1.1.png"
+                      width="24"
+                      height="24"
+                      alt="Author" /></span
+                  >{{ blog?.author || "Author" }}</a
+                >
+              </li>
+              <li>
+                <a href="javascript:void(0);">
+                  <span class="icon"
+                    ><img
+                      class="mt-4-"
+                      ngSrc="assets/img/icons/vl-calender-1.1.svg"
+                      width="16"
+                      height="16"
+                      alt="Calendar"
+                  /></span>
+                  {{ blog?.date || "" }}</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="vl-event-content vl-blg-content">
+            <h2 class="title">{{ blog?.title }}</h2>
+            @if (blog?.contentParagraphs?.length) {
+              @for (para of blog?.contentParagraphs; track $index) {
+                <p class="para pb-16">{{ para }}</p>
+              }
+            } @else {
+              <p class="para pb-16">No content available for this post.</p>
+            }
+          </div>
+        }
+        <div class="vl-blg-icon-box">
+          <div class="row">
+            <div class="col-lg-6 col-md-6">
+              <div class="single-blog-box1 mb-30">
+                <a routerLink="/blog" class="title">Mission and Vision</a>
+                <p class="para">
+                  Join us on this journey & let continue making the world a
+                  better place.
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+              <div class="single-blog-box1 mb-30">
+                <a routerLink="/blog" class="title">A Journey of Impact</a>
+                <p class="para">
+                  Our blog is more than just collection of updates it’s a
+                  platform for sharing.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-content-area">
+          <h2 class="title">Join Us in Making a Difference</h2>
+          <p class="para">
+            We invite you to join us, meet like-minded individuals, and become
+            part of a movement that makes real, lasting change. Whether you
+            attend, volunteer, or help spread the word, your involvement is
+            invaluable. Explore our upcoming events.
+          </p>
+
+          <h2 class="title">Event Highlights & Details</h2>
+          <p class="para">
+            Our events are designed to unite passionate individuals, raise
+            critical funds, & increase awareness for the causes we serve. Each
+            event offers a unique opportunity to connect, contribute, and
+            witness the power of community in action.
+          </p>
+          <p class="para">
+            Our events are opportunities to bring people together for meaningful
+            causes, creating moments of connection and impact that extend far
+            beyond the day itself.
+          </p>
+
+          <h2 class="title">Upcoming Fundraisers and Community Events</h2>
+          <p class="para">
+            From heartwarming charity dinners to hands-on volunteer days, these
+            gatherings allow us to celebrate milestones, share stories of
+            impact, and inspire further action. By joining us at our upcoming
+            events, you’re not just attending you’re becoming part movement.
+          </p>
+          <p class="para">
+            Each event, whether a fundraiser, awareness campaign, volunteer
+            drive, or community gathering, plays a vital role in supporting our
+            mission and raising essential resources.
+          </p>
+
+          <h2 class="title">Event Details and How to Participate</h2>
+          <p class="para">
+            Whether you attend, volunteer, or help spread the word, your
+            involvement is invaluable. Explore our upcoming events, find ways to
+            get involved, and help us create brighter futures for those in need.
+            Together, we can make an extraordinary impact!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+>>>>>>> 3460d3272a206d44f28fcf2012211c5cd6093c76

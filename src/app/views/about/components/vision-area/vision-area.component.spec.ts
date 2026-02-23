@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { VisionAreaComponent } from './vision-area.component';
@@ -21,3 +22,28 @@ describe('VisionAreaComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+=======
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { VisionAreaComponent } from './vision-area.component';
+
+describe('VisionAreaComponent', () => {
+  let component: VisionAreaComponent;
+  let fixture: ComponentFixture<VisionAreaComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [VisionAreaComponent]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(VisionAreaComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
+>>>>>>> 3460d3272a206d44f28fcf2012211c5cd6093c76

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Component } from "@angular/core";
 import { BreadcrumbComponent } from "../../common/breadcrumb/breadcrumb.component";
 import { AboutAreaComponent } from "./components/about-area/about-area.component";
@@ -20,3 +21,27 @@ import { TestiAreaComponent } from "./components/testi-area/testi-area.component
   styles: ``,
 })
 export class AboutComponent {}
+=======
+import { Component } from "@angular/core";
+import { BreadcrumbComponent } from "../../common/breadcrumb/breadcrumb.component";
+import { AboutAreaComponent } from "./components/about-area/about-area.component";
+import { MissionAreaComponent } from "./components/mission-area/mission-area.component";
+import { VisionAreaComponent } from "./components/vision-area/vision-area.component";
+import { CounterAreaComponent } from "./components/counter-area/counter-area.component";
+import { TestiAreaComponent } from "./components/testi-area/testi-area.component";
+
+@Component({
+  selector: "app-about",
+  imports: [
+    BreadcrumbComponent,
+    AboutAreaComponent,
+    MissionAreaComponent,
+    VisionAreaComponent,
+    CounterAreaComponent,
+    TestiAreaComponent,
+  ],
+  templateUrl: "./about.component.html",
+  styles: ``,
+})
+export class AboutComponent {}
+>>>>>>> 3460d3272a206d44f28fcf2012211c5cd6093c76
